@@ -1,0 +1,33 @@
+<ion-header>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-icon name="arrow-back-outline" routerLink="/welcome"></ion-icon>
+  <img src="../../assets/images/logo.png" class="logo" />
+  <div class="title">
+    <h4>Login</h4>
+    <p>Lets get started</p>
+  </div>
+  <ion-item class="primary-input">
+    <ion-label position="floating">Username</ion-label>
+    <ion-input placeholder="Enter your username" class="primary-input" required></ion-input> </ion-item>
+  <ion-item class="primary-input">
+    <ion-label position="floating">Password</ion-label>
+    <ion-input placeholder="Password" type="password"></ion-input>
+  </ion-item>
+
+  <div class="ion-margin-top ion-text-right forget">
+    <a>Forgot Password?</a>
+  </div>
+
+  <div class="ion-margin-top">
+    <ion-button class="custom-button" expand="block" shape="round" routerLink="/dashboard">LOGIN</ion-button>
+  </div>
+  <div class="ion-margin-top ion-text-center">
+    <a routerLink="/signup">Create account</a>
+  </div>
+
+</ion-content>
+<ion-footer>
+
+</ion-footer>

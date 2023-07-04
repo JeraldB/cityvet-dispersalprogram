@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/welcome"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <img src="../../assets/images/logo.png" class="logo" />
+  <div class="title">
+    <h4>Signup</h4>
+    <p>Create your account</p>
+  </div>
+
+  <ion-input placeholder="Email" type="email" class="primary-input"></ion-input>
+  <ion-input placeholder="First Name" class="primary-input"></ion-input>
+  <ion-input placeholder="Last Name" class="primary-input"></ion-input>
+  <ion-input placeholder="Password" type="password" class="primary-input"></ion-input>
+  <ion-input placeholder="Address" class="primary-input"></ion-input>
+
+
+  <p>By signing up you're agreed to our Terms & Conditions</p>
+
+  <div class="ion-margin-top">
+    <ion-button class="custom-button" expand="block" shape="round">SIGN UP</ion-button>
+  </div>
+  <div class="ion-margin-top ion-text-center">
+    <a [routerLink]="['/login']">Already have an account</a>
+  </div>
+</ion-content>
