@@ -27,6 +27,26 @@ const routes: Routes = [
     path: 'dashboard',
     loadChildren: () => import('./pages/dashboard/dashboard.module').then( m => m.DashboardPageModule)
   },
+  {
+    path: 'admin-login-page',
+    loadChildren: () => import('./pages/auth/admin-login-page/admin-login-page.module').then( m => m.AdminLoginPagePageModule)
+  },
+  {
+    path: 'admin-dashboard',
+    loadChildren: () => import('./admin-dashboard/admin-dashboard.module').then( m => m.AdminDashboardPageModule)
+  },
+  {
+    path: 'livestock',
+    loadChildren: () => import('./pages/livestock/livestock.module').then( m => m.LivestockPageModule)
+  },
+  {
+    path: 'user-tabs',
+    loadChildren: () => import('./pages/user-tabs/user-tabs.module').then( m => m.UserTabsPageModule)
+  },
+  {
+    path: 'records',
+    loadChildren: () => import('./pages/records/records.module').then( m => m.RecordsPageModule)
+  },
 ];
 
 @NgModule({

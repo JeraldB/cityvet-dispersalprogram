@@ -2,14 +2,35 @@
   <ion-toolbar>
     <ion-title>dashboard</ion-title>
   </ion-toolbar>
-</ion-header>
 
+</ion-header>
+<ion-toolbar>
+  <ion-searchbar></ion-searchbar>
+</ion-toolbar>
 <ion-content [fullscreen]="true">
-  <ion-card class="profile-cards">
-    <h3>Total</h3>
-    <div>
-      <p>250</p>
-    </div>
+  <ion-icon name="contact"></ion-icon>
+
+  <h5>Overview</h5>
+  <ion-card>
+    <ion-list>
+      <h5>Total</h5>
+    </ion-list>
   </ion-card>
 
-</ion-content>
+
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="home">
+        <ion-icon name="home"></ion-icon>
+
+      </ion-tab-button>
+      <ion-tab-button tab="radio">
+        <ion-icon name="add-circle-outline"></ion-icon>
+
+      </ion-tab-button>
+      <ion-tab-button tab="library">
+        <ion-icon name="folder"></ion-icon>
+
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
