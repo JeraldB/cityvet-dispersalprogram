@@ -1,13 +1,31 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>adminLoginPage</ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">adminLoginPage</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="body">
+  <ion-list  class="LoginForm">
+  <ion-list>
+    <img src="../../../../assets/images/logo.png">
+  </ion-list>
+    <ion-list>
+      <ion-item>
+        <ion-input labelPlacement="floating" label="Username" type="email" ></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">Password</ion-label>
+        <ion-input type="password"></ion-input>
+      </ion-item>
+      
+        <ion-button class="success" routerLink="/admin-tabs" color="success" size="small" expand="full" shape="round">LOGIN</ion-button>
+        <br>
+    <ion-list>
+      <ion-text class="termsP">By continuing, you agree to the <a href="" id="present-alert">Terms of use </a>and <a href="">Privacy Policy</a>
+      </ion-text>
+      <br>
+    </ion-list>
+    <ion-list id="forgot">
+      <a href="" class="forgotP">Forgot Password ?</a>
+    </ion-list>
+    </ion-list>
+  </ion-list>
+  
 </ion-content>
