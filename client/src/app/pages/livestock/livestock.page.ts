@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LivestockPage implements OnInit {
 
-  constructor() { }
+  selectedBeneficiary: any;
 
-  ngOnInit() {
+  constructor() {}
+
+  ngOnInit() {}
+
+  onBeneficiarySelect(e: any) {
+    this.selectedBeneficiary = e.detail.value;
+    console.log(this.selectedBeneficiary);
   }
-
 }
