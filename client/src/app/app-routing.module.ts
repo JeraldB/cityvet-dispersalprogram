@@ -31,10 +31,7 @@ const routes: Routes = [
     path: 'admin-login-page',
     loadChildren: () => import('./pages/auth/admin-login-page/admin-login-page.module').then( m => m.AdminLoginPagePageModule)
   },
-  {
-    path: 'admin-dashboard',
-    loadChildren: () => import('./admin-dashboard/admin-dashboard.module').then( m => m.AdminDashboardPageModule)
-  },
+
   {
     path: 'livestock',
     loadChildren: () => import('./pages/livestock/livestock.module').then( m => m.LivestockPageModule)
@@ -47,6 +44,28 @@ const routes: Routes = [
     path: 'records',
     loadChildren: () => import('./pages/records/records.module').then( m => m.RecordsPageModule)
   },
+  {
+    path: 'admin-dashboard',
+    loadChildren: () => import('./pages/admin-dashboard/admin-dashboard.module').then( m => m.AdminDashboardPageModule)
+  },
+  {
+    path: 'admin-beneficiary-tabs',
+    loadChildren: () => import('./pages/admin-beneficiary-tabs/admin-beneficiary-tabs.module').then( m => m.AdminBeneficiaryTabsPageModule)
+  },
+  {
+    path: 'admin-livestocks-tabs',
+    loadChildren: () => import('./pages/admin-livestocks-tabs/admin-livestocks-tabs.module').then( m => m.AdminLivestocksTabsPageModule)
+  },
+  {
+    path: 'admin-dispersal-tabs',
+    loadChildren: () => import('./pages/admin-dispersal-tabs/admin-dispersal-tabs.module').then( m => m.AdminDispersalTabsPageModule)
+  },  {
+    path: 'admin-tabs',
+    loadChildren: () => import('./pages/admin-tabs/admin-tabs.module').then( m => m.AdminTabsPageModule)
+  },
+
+
+ 
 ];
 
 @NgModule({
