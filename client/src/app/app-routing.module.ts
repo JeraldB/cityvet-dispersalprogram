@@ -71,6 +71,28 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/records/records.module').then((m) => m.RecordsPageModule),
   },
+  {
+    path: 'admin-tabs',
+    loadChildren: () => import('./pages/admin-tabs/admin-tabs.module').then( m => m.AdminTabsPageModule)
+  },
+  {
+    path: 'admin-dashboards',
+    loadChildren: () => import('./pages/admin-dashboards/admin-dashboards.module').then( m => m.AdminDashboardsPageModule)
+  },
+  {
+    path: 'admin-livestock',
+    loadChildren: () => import('./pages/admin-livestock/admin-livestock.module').then( m => m.AdminLivestockPageModule)
+  },
+  {
+    path: 'admin-beneficiary',
+    loadChildren: () => import('./pages/admin-beneficiary/admin-beneficiary.module').then( m => m.AdminBeneficiaryPageModule)
+  },
+  {
+    path: 'admin-dispersal',
+    loadChildren: () => import('./pages/admin-dispersal/admin-dispersal.module').then( m => m.AdminDispersalPageModule)
+  },
+
+
 ];
 
 @NgModule({
