@@ -1,17 +1,23 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-list>
-      <ion-item>
-        <ion-icon name="menu-outline"></ion-icon>
+<ion-header class="ion-no-border" [translucent]="true">
+  <ion-toolbar mode="md">
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-avatar slot="end">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxKYB_mwX1UfpPRLzRsRe3fZjZvCNVxtZQug&usqp=CAU" />
+        </ion-avatar>
+      </ion-button>
+    </ion-buttons>
 
-      </ion-item>
-      <ion-avatar slot="start">
-        <img class="logo-icons"
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKfZ2OoHiG8D5k8vdvjMWzXbC3IkFLZPo5Tw&usqp=CAU">
-      </ion-avatar>
-    </ion-list>
+    <ion-buttons slot="end">
+      <ion-button class="search-btn">
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+      <ion-button>
+        <ion-icon slot="icon-only" name="notifications-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
-
 </ion-header>
 <ion-toolbar>
   <ion-searchbar></ion-searchbar>
