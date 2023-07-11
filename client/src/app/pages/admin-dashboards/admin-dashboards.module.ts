@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { AdminDashboardsPageRoutingModule } from './admin-dashboards-routing.module';
 
 import { AdminDashboardsPage } from './admin-dashboards.page';
-
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 @NgModule({
   imports: [
     CommonModule,
@@ -15,6 +15,7 @@ import { AdminDashboardsPage } from './admin-dashboards.page';
     IonicModule,
     AdminDashboardsPageRoutingModule
   ],
-  declarations: [AdminDashboardsPage]
+  declarations: [AdminDashboardsPage],
+  schemas : [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AdminDashboardsPageModule {}
