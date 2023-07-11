@@ -1,3 +1,46 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-menu menuId="main-menu" contentId="main">
+    <ion-content>
+      <div class="menu-header-bg"></div>
+      <div class="header-content">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxKYB_mwX1UfpPRLzRsRe3fZjZvCNVxtZQug&usqp=CAU"
+          alt="">
+        <ion-label routerLink="user-tabs/profile" (click)="closeMenu()">
+          <h2 style="font-weight: 700;">AB Corpuz</h2>
+          <p>abraham@gmail.com</p>
+        </ion-label>
+      </div>
+
+
+      <ion-list class="menu-items" lines="none">
+        <ion-item (click)="closeMenu()">
+          <ion-icon name="pie-chart-outline"></ion-icon>Dashboard
+        </ion-item>
+        <ion-item>
+          <ion-icon name="browsers-outline"></ion-icon>Livestock
+        </ion-item>
+        <ion-item>
+          <ion-icon name="chatbubble-ellipses-outline"></ion-icon>Record
+        </ion-item>
+        <ion-item>
+          <ion-icon name="information-circle"></ion-icon>About
+        </ion-item>
+        <ion-item>
+          <ion-icon name="create-outline"></ion-icon>Help / FAQ
+        </ion-item>
+      </ion-list>
+
+
+      <ion-list class="menu-items">
+        <ion-item class="menu-footer">
+          <ion-icon name="exit-outline" routerLink="/login"></ion-icon>
+          Sign out
+        </ion-item>
+      </ion-list>
+
+
+    </ion-content>
+  </ion-menu>
+
+  <ion-router-outlet id="main"></ion-router-outlet>
 </ion-app>

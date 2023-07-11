@@ -6,10 +6,19 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { NgChartsModule } from 'ng2-charts';
+import { FormsModule } from '@angular/forms';
+import { DashboardModalComponent } from './components/dashboard-modal/dashboard-modal.component';
 
 @NgModule({
-  declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  declarations: [AppComponent, DashboardModalComponent],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    NgChartsModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+  ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })

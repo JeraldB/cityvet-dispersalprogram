@@ -1,7 +1,7 @@
 <ion-header class="ion-no-border" [translucent]="true">
   <ion-toolbar mode="md">
     <ion-buttons slot="start">
-      <ion-button>
+      <ion-button (click)="openMenu()">
         <ion-avatar slot="end">
           <img
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxKYB_mwX1UfpPRLzRsRe3fZjZvCNVxtZQug&usqp=CAU" />
@@ -14,21 +14,68 @@
         <ion-icon slot="icon-only" name="search"></ion-icon>
       </ion-button>
       <ion-button>
-        <ion-icon slot="icon-only" name="notifications-outline"></ion-icon>
+        <!-- <ion-icon slot="icon-only" name="notifications-outline"></ion-icon> -->
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-toolbar>
-  <ion-searchbar></ion-searchbar>
-</ion-toolbar>
+
 <ion-content>
-  <ion-item>
-    <h2>Welcome back</h2>
+  <ion-item class="ion-padding" style="margin-bottom:0; padding-bottom: 0;">
+    <div>
+      <h3 style="margin-bottom:0;">Hello Ab
+      </h3>
+      <div>
+        <p style="margin-top:0; font-weight: 100; ">Welcome back!</p>
+      </div>
+    </div>
   </ion-item>
-  <h5>Overview</h5>
-  <ion-card>
-    <ion-list>
-      <h5>Total</h5>
-    </ion-list>
-  </ion-card>
+
+  <ion-content class="ion-padding" style="margin-top:0; padding-top: -45;">
+    <div class="dashboard-grid">
+      <div class="grid-item">
+        <ion-card style="border-radius: 15px; background-color: rgba(151, 173, 190, 0.409);">
+          <ion-card-header>
+            <div
+              style="background-color: rgb(255, 255, 255); width:40px; height:40px; display: flex; justify-content:center; align-items:center; border-radius:10px;">
+              <ion-icon name="analytics-sharp"></ion-icon>
+            </div>
+            <ion-card-title style="font-weight: 600;">Total Offspring</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <h2 class="value-offspring">{{ calculateOffspringCount() }}</h2>
+          </ion-card-content>
+        </ion-card>
+      </div>
+      <div>
+        <ion-fab horizontal="end">
+          <ion-fab-button>
+            <ion-icon name="add" (click)="dashboardOpenModal()"></ion-icon>
+          </ion-fab-button>
+        </ion-fab>
+        <!-- <ion-button expand="full" (click)="dashboardOpenModal()">Manage</ion-button> -->
+      </div>
+      <ion-item style="margin-bottom:0; padding-bottom: 0;">
+        <div>
+          <h3 style="margin-bottom:0;">Cityvet
+          </h3>
+          <div>
+            <p style="margin-top:0; font-weight: 100; ">Track your Livestock offspring!</p>
+          </div>
+        </div>
+      </ion-item>
+      <div class="grid-item">
+        <ion-card style="border-radius: 10px;">
+          <ion-card-header>
+            <ion-card-title>Offspring Overview</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <canvas id="myChart"></canvas>
+          </ion-card-content>
+
+        </ion-card>
+
+      </div>
+    </div>
+
+  </ion-content>

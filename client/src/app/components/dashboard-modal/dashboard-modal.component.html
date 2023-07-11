@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Edit Data
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let item of data">
+      <ion-label>{{ item.label }}</ion-label>
+      <ion-input type="number" [(ngModel)]="item.value"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="full" (click)="updateData()">Save</ion-button>
+  <ion-button expand="full" (click)="closeModal()">Cancel</ion-button>
+</ion-content>

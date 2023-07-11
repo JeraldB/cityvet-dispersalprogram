@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { register } from 'swiper/element/bundle';
+import { MenuController } from '@ionic/angular';
 
 register();
 
@@ -9,5 +10,9 @@ register();
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
+  constructor(private menuController: MenuController) {}
+
+  closeMenu() {
+    this.menuController.close('main-menu');
+  }
 }

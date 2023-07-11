@@ -61,11 +61,6 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'records',
-    loadChildren: () =>
-      import('./pages/records/records.module').then((m) => m.RecordsPageModule),
-  },
-  {
     path: 'admin-tabs',
     loadChildren: () =>
       import('./pages/admin-tabs/admin-tabs.module').then(
@@ -99,7 +94,15 @@ const routes: Routes = [
       import('./pages/admin-dispersal/admin-dispersal.module').then(
         (m) => m.AdminDispersalPageModule
       ),
+  },  {
+    path: 'profile',
+    loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
   },
+  {
+    path: 'dispersal',
+    loadChildren: () => import('./pages/dispersal/dispersal.module').then( m => m.DispersalPageModule)
+  },
+
 ];
 
 @NgModule({

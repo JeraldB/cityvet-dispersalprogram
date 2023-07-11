@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { RecordsPageRoutingModule } from './records-routing.module';
+import { DispersalPageRoutingModule } from './dispersal-routing.module';
 
-import { RecordsPage } from './records.page';
+import { DispersalPage } from './dispersal.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RecordsPageRoutingModule
+    DispersalPageRoutingModule
   ],
-  declarations: [RecordsPage]
+  declarations: [DispersalPage]
 })
-export class RecordsPageModule {}
+export class DispersalPageModule {}

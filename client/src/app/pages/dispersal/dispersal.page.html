@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Dispersal Program Form
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form>
+    <ion-item>
+      <ion-label position="floating">Subject</ion-label>
+      <ion-input name="subject" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Type of Inquiry</ion-label>
+      <ion-select name="reportType" required>
+        <ion-select-option value="apply">Benefeciary Application</ion-select-option>
+        <ion-select-option value="dispers">Dispersed</ion-select-option>
+        <ion-select-option value="status">Report Status</ion-select-option>
+        <ion-select-option value="other">Other Inquiry</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Compose Message</ion-label>
+      <ion-textarea name="message" required></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Attach Image (Optional)</ion-label>
+      <input type="file">
+      <!-- (change)="handleFileInput($event) -->
+    </ion-item>
+
+    <ion-button expand="full" type="submit">Submit</ion-button>
+  </form>
+</ion-content>

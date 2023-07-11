@@ -1,0 +1,108 @@
+.cover-photo {
+  width: 100%;
+  height: 200px;
+  background-image: url("../../../assets/images/cvo.jpg");
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+  margin-right: 50px;
+}
+
+.profile-cards {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 2;
+  margin-top: -45px;
+}
+
+.profile-card {
+  position: relative;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  z-index: 3;
+}
+
+.profile-image {
+  display: flex;
+  align-items: center;
+}
+
+.profile-image img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.name-slot {
+  margin-bottom: 20px;
+  font-weight: 400;
+  font-size: 24px;
+  font-family: "Poppins", sans-serif;
+  align-items: baseline;
+}
+
+.email-subtext {
+  font-size: 16px;
+  color: #666666;
+  font-weight: 400;
+  font-family: "Poppins", sans-serif;
+  margin-top: 5px;
+}
+
+.profile-details {
+  margin-top: 20px;
+}
+
+.details-row {
+  display: flex;
+  align-items: center;
+}
+
+.detail {
+  margin-right: 20px;
+}
+
+.detail p {
+  font-size: 16px;
+  color: #666666;
+  margin-bottom: 5px;
+}
+
+.divider {
+  width: 100%;
+  height: 3px;
+  background-color: #44d3b8;
+  margin: 20px 0;
+}
+
+.back-icon {
+  margin-bottom: 25px;
+}
+.clean-content {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.clean-content-inner {
+  background-color: #f1f1f1;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.centered-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.centered-content img {
+  margin-bottom: 10px;
+}

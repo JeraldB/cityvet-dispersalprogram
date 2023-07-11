@@ -33,13 +33,25 @@ const routes: Routes = [
         ],
       },
       {
-        path: 'records',
+        path: 'dispersal',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../records/records-routing.module').then(
-                (m) => m.RecordsPageRoutingModule
+              import('../dispersal/dispersal-routing.module').then(
+                (m) => m.DispersalPageRoutingModule
+              ),
+          },
+        ],
+      },
+      {
+        path: 'profile',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../profile/profile-routing.module').then(
+                (m) => m.ProfilePageRoutingModule
               ),
           },
         ],
