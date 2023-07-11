@@ -1,167 +1,266 @@
 
 <!--HOME CONTENTS----------------------------------------------------------->
 
-<ion-header>
-  <ion-toolbar>
-    <ion-title>CITYVET</ion-title>
- 
-  
-<!--ION MODAL----------------------------------------------------------->
-
-
-    <div class="ion-page">
-      <ion-button fill="clear" id="open-modal" size="large" >
-        <ion-icon name="notifications-outline" class="notif"></ion-icon>
-        <ion-badge slot="end">4</ion-badge>
-      </ion-button>
-      <ion-modal #modal trigger="open-modal" [presentingElement]="presentingElement">
-        <ng-template>
-          <ion-header>
-            <ion-toolbar> 
-              <ion-title>Notification</ion-title>
-              <ion-buttons slot="end">
-                <ion-button (click)="modal.dismiss()">Close</ion-button>
-              </ion-buttons>
-            </ion-toolbar>
-          </ion-header>
-          <ion-content>
-            <ion-list>
-              
-              <ion-item-sliding>
-                <ion-item-options side="start">
-                  <ion-item-option id="present-alert" color="success" expandable>Approve</ion-item-option>
-                  <ion-alert
-                  trigger="present-alert"
-                  header="Approved?"
-                  message="This will be Beneficiary"
-                  [buttons]="alertButton"
-                  ></ion-alert>
-                </ion-item-options>
-            
-                <ion-item>
-                  <ion-avatar slot="start">
-                    <ion-img src="../../assets/icon/favicon.png"></ion-img>
-                  </ion-avatar>
-                  <ion-label>
-                    <h2>Prince Gerald Asilo</h2>
-                    <p>Full-Stack Web Dev./Data Scientist</p>
-                  </ion-label>
-                </ion-item>
-            
-                <ion-item-options side="end">
-                  <ion-item-option>Check</ion-item-option>
-                  <ion-item-option id="present-alerts" color="danger" expandable>Delete</ion-item-option>
-                  <ion-alert
-                    trigger="present-alerts"
-                    header="Removed?"
-                    message="Are you sure to removed?"
-                    [buttons]="alertButton"
-                  ></ion-alert>
-                </ion-item-options>
-              </ion-item-sliding>
-
-              <ion-item-sliding>
-                <ion-item-options side="start">
-                  <ion-item-option color="success" expandable>Approve</ion-item-option>
-                </ion-item-options>
-            
-                <ion-item>
-                  <ion-avatar slot="start">
-                    <ion-img src="../../assets/icon/favicon.png"></ion-img>
-                  </ion-avatar>
-                  <ion-label>
-                    <h2>Jerald Banalan</h2>
-                    <p>Data Scientist</p>
-                  </ion-label>
-                </ion-item>
-            
-                <ion-item-options side="end">
-                  <ion-item-option>Check</ion-item-option>
-                  <ion-item-option color="danger" expandable>Delete</ion-item-option>
-                </ion-item-options>
-              </ion-item-sliding>
-
-
-              <ion-item-sliding>
-                <ion-item-options side="start">
-                  <ion-item-option color="success" expandable>Approve</ion-item-option>
-                </ion-item-options>
-            
-                <ion-item>
-                  <ion-avatar slot="start">
-                    <ion-img src="../../assets/icon/favicon.png"></ion-img>
-                  </ion-avatar>
-                  <ion-label>
-                    <h2>Maher Calingasan</h2>
-                    <p>Full-Stack Web Dev.</p>
-                  </ion-label>
-                </ion-item>
-            
-                <ion-item-options side="end">
-                  <ion-item-option>Check</ion-item-option>
-                  <ion-item-option color="danger" expandable>Delete</ion-item-option>
-                </ion-item-options>
-              </ion-item-sliding>
-
-
-              <ion-item-sliding>
-                <ion-item-options side="start">
-                  <ion-item-option color="success" expandable>Approve</ion-item-option>
-                </ion-item-options>
-            
-                <ion-item>
-                  <ion-avatar slot="start">
-                    <ion-img src="../../assets/icon/favicon.png"></ion-img>
-                  </ion-avatar>
-                  <ion-label>
-                    <h2>Bahala na basta papasa kami</h2>
-                    <p>Waiting sayo</p>
-                  </ion-label>
-                </ion-item>
-            
-                <ion-item-options side="end">
-                  <ion-item-option>Check</ion-item-option>
-                  <ion-item-option color="danger" expandable>Delete</ion-item-option>
-                </ion-item-options>
-              </ion-item-sliding>
-
-
-            </ion-list>
-          </ion-content>
-        </ng-template>
-      </ion-modal>
-    </div>
-    
-
-  </ion-toolbar>
-</ion-header>
-
-<!--END  MODAL----------------------------------------------------------->
-
-
 <ion-content>
-<ion-card>
-  <ion-card-header>
-    <ion-card-title>Livestock Management System</ion-card-title>
-  </ion-card-header>
-  <ion-card-content style="text-align: justify;">
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo quod aliquam rerum. Delectus distinctio cupiditate error sequi culpa enim! Illum at ab earum mollitia tenetur possimus eaque! Velit, ducimus soluta.
-  </ion-card-content>
-</ion-card>
 
-<h1 style="margin: 20px;">News</h1>
-<ion-card>
-  <ion-card-header>
-    <ion-card-title>-----
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>CITYVET</ion-title>
+   
+    
+  <!--ION MODAL----------------------------------------------------------->
+  
+  
+      <div class="ion-page">
+        <ion-button fill="clear" id="open-modal" size="large" >
+          <ion-icon name="notifications-outline" class="notif"></ion-icon>
+          <ion-badge slot="end">4</ion-badge>
+        </ion-button>
+        <ion-modal #modal trigger="open-modal" [presentingElement]="presentingElement">
+          <ng-template>
+            <ion-header>
+              <ion-toolbar> 
+                <ion-title>Notification</ion-title>
+                <ion-buttons slot="end">
+                  <ion-button (click)="modal.dismiss()">Close</ion-button>
+                </ion-buttons>
+              </ion-toolbar>
+            </ion-header>
+            <ion-content>
+              <ion-list>
+                
+                <ion-item-sliding>
+                  <ion-item-options side="start">
+                    <ion-item-option id="present-alert" color="success" expandable>Approve</ion-item-option>
+                    <ion-alert
+                    trigger="present-alert"
+                    header="Approved?"
+                    message="This will be Beneficiary"
+                    [buttons]="alertButton"
+                    ></ion-alert>
+                  </ion-item-options>
+              
+                  <ion-item>
+                    <ion-avatar slot="start">
+                      <ion-img src="../../assets/icon/favicon.png"></ion-img>
+                    </ion-avatar>
+                    <ion-label>
+                      <h2>Prince Gerald Asilo</h2>
+                      <p>Full-Stack Web Dev./Data Scientist</p>
+                    </ion-label>
+                  </ion-item>
+              
+                  <ion-item-options side="end">
+                    <ion-item-option>Check</ion-item-option>
+                    <ion-item-option id="present-alerts" color="danger" expandable>Delete</ion-item-option>
+                    <ion-alert
+                      trigger="present-alerts"
+                      header="Removed?"
+                      message="Are you sure to removed?"
+                      [buttons]="alertButton"
+                    ></ion-alert>
+                  </ion-item-options>
+                </ion-item-sliding>
+  
+                <ion-item-sliding>
+                  <ion-item-options side="start">
+                    <ion-item-option color="success" expandable>Approve</ion-item-option>
+                  </ion-item-options>
+              
+                  <ion-item>
+                    <ion-avatar slot="start">
+                      <ion-img src="../../assets/icon/favicon.png"></ion-img>
+                    </ion-avatar>
+                    <ion-label>
+                      <h2>Jerald Banalan</h2>
+                      <p>Data Scientist</p>
+                    </ion-label>
+                  </ion-item>
+              
+                  <ion-item-options side="end">
+                    <ion-item-option>Check</ion-item-option>
+                    <ion-item-option color="danger" expandable>Delete</ion-item-option>
+                  </ion-item-options>
+                </ion-item-sliding>
+  
+  
+                <ion-item-sliding>
+                  <ion-item-options side="start">
+                    <ion-item-option color="success" expandable>Approve</ion-item-option>
+                  </ion-item-options>
+              
+                  <ion-item>
+                    <ion-avatar slot="start">
+                      <ion-img src="../../assets/icon/favicon.png"></ion-img>
+                    </ion-avatar>
+                    <ion-label>
+                      <h2>Maher Calingasan</h2>
+                      <p>Full-Stack Web Dev.</p>
+                    </ion-label>
+                  </ion-item>
+              
+                  <ion-item-options side="end">
+                    <ion-item-option>Check</ion-item-option>
+                    <ion-item-option color="danger" expandable>Delete</ion-item-option>
+                  </ion-item-options>
+                </ion-item-sliding>
+  
+  
+                <ion-item-sliding>
+                  <ion-item-options side="start">
+                    <ion-item-option color="success" expandable>Approve</ion-item-option>
+                  </ion-item-options>
+              
+                  <ion-item>
+                    <ion-avatar slot="start">
+                      <ion-img src="../../assets/icon/favicon.png"></ion-img>
+                    </ion-avatar>
+                    <ion-label>
+                      <h2>Bahala na basta papasa kami</h2>
+                      <p>Waiting sayo</p>
+                    </ion-label>
+                  </ion-item>
+              
+                  <ion-item-options side="end">
+                    <ion-item-option>Check</ion-item-option>
+                    <ion-item-option color="danger" expandable>Delete</ion-item-option>
+                  </ion-item-options>
+                </ion-item-sliding>
+  
+  
+              </ion-list>
+            </ion-content>
+          </ng-template>
+        </ion-modal>
+      </div>
       
-      <ion-button fill="clear" color="danger" class="trash-icon">
-        <ion-icon name="trash-outline"></ion-icon>
-      </ion-button>
-    </ion-card-title>
-  </ion-card-header>
-  <ion-card-content style="text-align: justify;">
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo quod aliquam rerum. Delectus distinctio cupiditate error sequi culpa enim! Illum at ab earum mollitia tenetur possimus eaque! Velit, ducimus soluta.
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti blanditiis minima necessitatibus perferendis, reiciendis aperiam totam unde ut inventore ex soluta possimus, ullam suscipit velit. Laboriosam a esse accusantium fugit?
-  </ion-card-content>
-</ion-card>
+  
+    </ion-toolbar>
+  </ion-header>
+  
+  <!--END  MODAL----------------------------------------------------------->
+  
+  
+  <ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Livestock Management System</ion-card-title>
+    </ion-card-header>
+    <ion-card-content style="text-align: justify;">
+      A livestock management system is a comprehensive software solution designed to assist farmers and 
+    livestock owners in effectively managing their animal-related operations.
+     It enables users to streamline and automate various tasks involved in livestock management,
+      such as tracking animal health, monitoring breeding and reproduction.
+    </ion-card-content>
+  </ion-card>
+    
+  <!--ADMIN SWIPER MODULE ----------------------------------------------------------->
+  
+  <div class="admin-swiper">
+    <h3>NEW  APPROVED BENEFICIARY</h3>
+  
+  <swiper-container class="admin-swiper" [slidesPerView]="1.2" (slidechange) = "swiperSlideChanged($event)" [loop]="true" [pagination]="true">
+  
+    <swiper-slide>
+      <ion-card class="admin-swipe">
+        <ion-card-content>
+          <ion-item id="swipes">
+            <ion-thumbnail slot="start">
+              <ion-img src="../././././.././../assets/images/profile.png"></ion-img>
+            </ion-thumbnail>
+            <ion-label> ID :<br> Name: <br> Age : <br> Address: <br> Livestock : <br></ion-label>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+    </swiper-slide>
+  
+    <swiper-slide>
+      <ion-card class="admin-swipe">
+        <ion-card-content>
+          <ion-item id="swipes">
+            <ion-thumbnail slot="start">
+              <ion-img src="../././././.././../assets/images/profile.png"></ion-img>
+            </ion-thumbnail>
+            <ion-label> ID :<br> Name: <br> Age : <br> Address: <br> Livestock : <br></ion-label>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+    </swiper-slide>
+    
+    <swiper-slide>
+      <ion-card class="admin-swipe">
+        <ion-card-content>
+          <ion-item id="swipes">
+            <ion-thumbnail slot="start">
+              <ion-img src="../././././.././../assets/images/profile.png"></ion-img>
+            </ion-thumbnail>
+            <ion-label> ID :<br> Name: <br> Age : <br> Address: <br> Livestock : <br></ion-label>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+    </swiper-slide>
+  
+    <swiper-slide>
+      <ion-card class="admin-swipe">
+        <ion-card-content>
+          <ion-item id="swipes">
+            <ion-thumbnail slot="start">
+              <ion-img src="../././././.././../assets/images/profile.png"></ion-img>
+            </ion-thumbnail>
+            <ion-label> ID :<br> Name: <br> Age : <br> Address: <br> Livestock : <br></ion-label>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+    </swiper-slide>
+  
+    <swiper-slide>
+      <ion-card class="admin-swipe">
+        <ion-card-content>
+          <ion-item id="swipes">
+            <ion-thumbnail slot="start">
+              <ion-img src="../././././.././../assets/images/profile.png"></ion-img>
+            </ion-thumbnail>
+            <ion-label> ID :<br> Name: <br> Age : <br> Address: <br> Livestock : <br></ion-label>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+    </swiper-slide>
+  </swiper-container>
+  </div>
+  
+  <div class="admin-total">
+    <ion-card>
+      <ion-item>
+       <ion-thumbnail>
+         <ion-img src="../../../assets/images/logo.png"></ion-img>
+        </ion-thumbnail>
+        <ion-label><H1>Total Beneficiary :</H1></ion-label>
+        <ion-text><h1>153</h1></ion-text>
+      </ion-item>
+   </ion-card>
+   
+   <ion-card>
+     <ion-item>
+      <ion-thumbnail>
+        <ion-img src="../../../assets/images/logo.png"></ion-img>
+       </ion-thumbnail>
+       <ion-label><H1>Total Livestock :</H1></ion-label>
+       <ion-text><h1>143</h1></ion-text>
+     </ion-item>
+   </ion-card>
+   
+   <ion-card>
+     <ion-item>
+      <ion-thumbnail>
+        <ion-img src="../../../assets/images/logo.png"></ion-img>
+       </ion-thumbnail>
+       <ion-label><H1>Total Dispersed Livestock :</H1></ion-label>
+       <ion-text><h1>123</h1></ion-text>
+     </ion-item>
+   </ion-card>
+  </div>
+  <br><br><br>
+  
+  </ion-content>
+
 </ion-content>

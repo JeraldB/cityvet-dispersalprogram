@@ -20,6 +20,9 @@ export class AdminDashboardsPage implements OnInit {
   ]
 
   constructor() { }
+  swiperSlideChanged(e:any){
+    console.log('changed :', e );
+  }
   ngOnInit() {
     this.presentingElement = document.querySelector('.ion-page');
   }

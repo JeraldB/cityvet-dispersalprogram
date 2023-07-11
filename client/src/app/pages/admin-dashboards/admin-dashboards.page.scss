@@ -1,13 +1,28 @@
-ion-tab-button :hover{
-    color: lightblue;
-    
+ion-content, .body-background{
+    --background: url("../../../assets/images/background1.png") no-repeat center center fixed;
+    -webkit-background-size:cover;
+    -moz-background-size:cover ;
+    --background-size: cover;
 }
-
 .ion-page{
     width: 100px;
     align-items: end;
     transform: translateX(270px);
 }
-.trash-icon{
-    transform: translateX(230px);
+.livestock-detail{
+    border-radius: 10px;
+}
+#open-modal{
+    position: fixed;
+    transform: translateX(10px);
+}
+.admin-swipe{
+    border-radius: 20px;
+}
+#swipes{
+    --ion-background-color: radial-gradient(rgb(194, 220, 182), rgb(101, 212, 164));
+    opacity: 0.9;
+ }
+ .admin-total{
+    opacity: 0.8;
 }
