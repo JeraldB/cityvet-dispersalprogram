@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Add Livestock</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Eartag</ion-label>
+    <ion-input [(ngModel)]="livestock.earTag" placeholder="Enter eartag"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Breed</ion-label>
+    <ion-input [(ngModel)]="livestock.breed" placeholder="Enter breed"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Animal Type</ion-label>
+    <ion-input [(ngModel)]="livestock.animalType" placeholder="Enter animal type"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Date of Birth</ion-label>
+    <ion-input type="date" [(ngModel)]="livestock.dateOfBirth" placeholder="Enter date of birth"></ion-input>
+  </ion-item>
+  <ion-button expand="full" (click)="saveLivestock()">Save</ion-button>
+</ion-content>

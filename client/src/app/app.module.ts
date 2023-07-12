@@ -9,11 +9,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { NgChartsModule } from 'ng2-charts';
 import { FormsModule } from '@angular/forms';
 import { DashboardModalComponent } from './components/dashboard-modal/dashboard-modal.component';
+import { AddLivestocksComponent } from './components/add-livestocks/add-livestocks.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [AppComponent, DashboardModalComponent],
+  declarations: [AppComponent, DashboardModalComponent, AddLivestocksComponent],
+
   imports: [
     BrowserModule,
+    HttpClientModule,
     FormsModule,
     NgChartsModule,
     IonicModule.forRoot(),

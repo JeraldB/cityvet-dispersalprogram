@@ -2,15 +2,14 @@ const db = require("../models/connection");
 
 const Livestock = db.livestock;
 
-// Controller actions
 const addLivestock = async (req, res) => {
   try {
-    const { earTag, animalType, dateOfBirth } = req.body;
+    const { earTag, breed, animalType, dateOfBirth } = req.body;
 
     // Create a new Livestock record
     const livestock = await Livestock.create({
-      livestockId,
       earTag,
+      breed,
       animalType,
       dateOfBirth,
     });
