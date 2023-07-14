@@ -41,11 +41,12 @@ db.sequelize.sync({ force: false }).then(() => {
 });
 
 
-// Add associations
-db.users.hasOne(db.benefeciary, { foreignKey: 'UserId', as: 'beneficiary' });
-db.benefeciary.belongsTo(db.users, { foreignKey: 'UserId' });
 
-db.users.hasMany(db.availments);
-db.availments.belongsTo(db.users);
+// Add associations
+db.users.hasOne(db.benefeciary, { foreignKey: "userId", as: "beneficiary" });
+db.benefeciary.belongsTo(db.users, { foreignKey: "userId" });
+
+db.users.hasMany(db.availments, { foreignKey: "userId", as: "availments" });
+db.availments.belongsTo(db.users, { foreignKey: "userId", as: "user" });
 
 module.exports = db;
