@@ -106,6 +106,10 @@ const routes: Routes = [
     path: 'availment',
     loadChildren: () => import('./pages/availment/availment.module').then( m => m.AvailmentPageModule)
   },
+  {
+    path: 'about',
+    loadChildren: () => import('./pages/about/about.module').then( m => m.AboutPageModule)
+  },
 
 ];
 
