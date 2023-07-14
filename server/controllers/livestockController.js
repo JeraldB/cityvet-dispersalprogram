@@ -4,11 +4,14 @@ const Livestock = db.livestock;
 
 const addLivestock = async (req, res) => {
   try {
-    const { earTag, breed, animalType, dateOfBirth } = req.body;
+    const { gender, health, livestockStatus, breed, animalType, dateOfBirth } =
+      req.body;
 
     // Create a new Livestock record
     const livestock = await Livestock.create({
-      earTag,
+      gender,
+      health,
+      livestockStatus,
       breed,
       animalType,
       dateOfBirth,
@@ -52,8 +55,52 @@ const getLivestockById = async (req, res) => {
   }
 };
 
+const updateLivestock = async (req, res) => {
+  try {
+    const { livestockId } = req.params;
+    const {
+      gender,
+      health,
+      livestockStatus,
+      breed,
+      animalType,
+      dateOfBirth,
+      age,
+      weight,
+      height,
+    } = req.body;
+
+    // Find the Livestock record by livestockId
+    const livestock = await Livestock.findByPk(livestockId);
+
+    if (!livestock) {
+      return res.status(404).json({ message: "Livestock not found" });
+    }
+
+    // Update the Livestock record
+
+    livestock.gender = gender;
+    livestock.health = health;
+    livestock.livestockStatus = livestockStatus;
+    livestock.breed = breed;
+    livestock.animalType = animalType;
+    livestock.dateOfBirth = dateOfBirth;
+    livestock.age = age;
+    livestock.weight = weight;
+    livestock.height = height;
+
+    await livestock.save();
+
+    res.status(200).json({ livestock });
+  } catch (error) {
+    console.error("Error updating livestock:", error);
+    res.status(500).json({ message: "Failed to update livestock" });
+  }
+};
+
 module.exports = {
   addLivestock,
   getAllLivestock,
   getLivestockById,
+  updateLivestock,
 };

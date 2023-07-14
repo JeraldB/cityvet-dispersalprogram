@@ -1,15 +1,14 @@
 module.exports = (sequelize, DataTypes) => {
-  const Dispersal = sequelize.define("Dispersal", {
-    dispersalDate: {
+  const Transaction = sequelize.define("transaction", {
+    transactionDate: {
       type: DataTypes.DATE,
       allowNull: false,
       defaultValue: DataTypes.NOW,
     },
-    quantity: {
-      type: DataTypes.INTEGER,
+    description: {
+      type: DataTypes.STRING(50),
       allowNull: false,
     },
   });
-
-  return Dispersal;
+  return Transaction;
 };

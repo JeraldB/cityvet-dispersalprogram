@@ -29,19 +29,23 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 db.users = require("./users")(sequelize, DataTypes);
+db.benefeciary = require("./benefeciary")(sequelize, DataTypes);
 db.admins = require("./admins")(sequelize, DataTypes);
 db.livestock = require("./livestocks")(sequelize, DataTypes);
 db.dispersal = require("./dispersal")(sequelize, DataTypes);
+db.availments = require("./availments")(sequelize, DataTypes);
+db.transaction = require("./transactions")(sequelize, DataTypes);
 
 db.sequelize.sync({ force: false }).then(() => {
   console.log("re-sync");
 });
 
-// associations
-// Dispersal.belongsTo(Beneficiary);
-// Dispersal.belongsTo(Livestock);
-// Dispersal.belongsTo(Admin);
-// Beneficiary.hasMany(Dispersal);
-// Livestock.hasMany(Dispersal);
+
+// Add associations
+db.users.hasOne(db.benefeciary, { foreignKey: 'UserId', as: 'beneficiary' });
+db.benefeciary.belongsTo(db.users, { foreignKey: 'UserId' });
+
+db.users.hasMany(db.availments);
+db.availments.belongsTo(db.users);
 
 module.exports = db;
