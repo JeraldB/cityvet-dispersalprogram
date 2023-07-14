@@ -1,13 +1,85 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>home</ion-title>
+<ion-header class="ion-no-border" [translucent]="true">
+  <ion-toolbar mode="md">
+    <ion-buttons slot="start">
+      <ion-button (click)="openMenu()">
+        <ion-avatar slot="end">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKr01ShBwrOVCXvnLmdQDgaVcBYW7PVbFgdf8Qi9sdSGfIQ-g__frQ6FOhfevYW1pbH4c&usqp=CAU" />
+        </ion-avatar>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button class="search-btn">
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+      <ion-button>
+        <!-- <ion-icon slot="icon-only" name="notifications-outline"></ion-icon> -->
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">home</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-item class="ion-padding" style="margin-bottom:0; padding-bottom: 0;">
+    <div>
+      <h3 style="margin-bottom:0;">Hello Ab
+      </h3>
+      <div>
+        <p style="margin-top:0; font-weight: 100; ">Welcome back!</p>
+      </div>
+    </div>
+  </ion-item>
+
+  <ion-row class="card-row">
+    <ion-col size="4">
+      <ion-card class="card-icon">
+        <ion-card-content>
+          <ion-icon name="icon-name" class="icon"></ion-icon>
+          <ion-card-title class="title">Manage</ion-card-title>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+
+    <ion-col size="4">
+      <ion-card class="card-icon">
+        <ion-card-content>
+          <ion-icon name="icon-name" class="icon"></ion-icon>
+          <ion-card-title class="title">Calendar</ion-card-title>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+
+    <ion-col size="4">
+      <ion-card class="card-icon">
+        <ion-card-content>
+          <ion-icon name="icon-name" class="icon"></ion-icon>
+          <ion-card-title class="title">Inquiry</ion-card-title>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+
+
+
+
+  <ion-content class="ion-padding">
+    <ion-card style="border-radius: 12px;" class="sticky-card">
+      <ion-card-header>
+        <ion-card-title class="transaction-title">Transactions</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <div class="transaction-list">
+          <div *ngFor="let transaction of transactions" class="transaction-item">
+            <div class="transaction-details">
+              <p class="transaction-description">{{ transaction.description }}</p>
+              <p class="transaction-date">Date: {{ transaction.date }}</p>
+
+            </div>
+            <hr class="transaction-line" />
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </ion-content>
 </ion-content>

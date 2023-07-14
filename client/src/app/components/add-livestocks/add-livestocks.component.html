@@ -8,21 +8,70 @@
 </ion-header>
 
 <ion-content>
-  <ion-item>
-    <ion-label>Eartag</ion-label>
-    <ion-input [(ngModel)]="livestock.earTag" placeholder="Enter eartag"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>Breed</ion-label>
-    <ion-input [(ngModel)]="livestock.breed" placeholder="Enter breed"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>Animal Type</ion-label>
-    <ion-input [(ngModel)]="livestock.animalType" placeholder="Enter animal type"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>Date of Birth</ion-label>
-    <ion-input type="date" [(ngModel)]="livestock.dateOfBirth" placeholder="Enter date of birth"></ion-input>
-  </ion-item>
-  <ion-button expand="full" (click)="saveLivestock()">Save</ion-button>
+  <div class="form-container">
+    <ion-item>
+      <ion-label class="form-label">Animal Type</ion-label>
+      <ion-select class="form-input" [(ngModel)]="livestock.animalType" placeholder="Enter animal type">
+        <ion-select-option value="Cattle">Cattle</ion-select-option>
+        <ion-select-option value="Goat">Goat</ion-select-option>
+        <ion-select-option value="Swine">Swine</ion-select-option>
+        <ion-select-option value="Chicken">Chicken</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <!--  ngIf Boolean expression to evaluate as the condition for showing a template. -->
+    <ion-item *ngIf="livestock.animalType === 'Cattle'">
+      <ion-label class="form-label">Breed</ion-label>
+      <ion-select class="form-input" [(ngModel)]="livestock.breed" placeholder="Enter breed">
+        <ion-select-option value="Angus">Angus</ion-select-option>
+        <ion-select-option value="Hereford">Hereford</ion-select-option>
+        <ion-select-option value="Holstein">Holstein</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item *ngIf="livestock.animalType === 'Goat'">
+      <ion-label class="form-label">Breed</ion-label>
+      <ion-select class="form-input" [(ngModel)]="livestock.breed" placeholder="Enter breed">
+        <ion-select-option value="Boer">Boer</ion-select-option>
+        <ion-select-option value="Nubian">Nubian</ion-select-option>
+        <ion-select-option value="Saanen">Saanen</ion-select-option>
+
+      </ion-select>
+    </ion-item>
+    <ion-item *ngIf="livestock.animalType === 'Swine'">
+      <ion-label class="form-label">Breed</ion-label>
+      <ion-select class="form-input" [(ngModel)]="livestock.breed" placeholder="Enter breed">
+        <ion-select-option value="Yorkshire">Yorkshire</ion-select-option>
+        <ion-select-option value="Duroc">Duroc</ion-select-option>
+        <ion-select-option value="Hampshire">Hampshire</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item *ngIf="livestock.animalType === 'Chicken'">
+      <ion-label class="form-label">Breed</ion-label>
+      <ion-select class="form-input" [(ngModel)]="livestock.breed" placeholder="Enter breed">
+        <ion-select-option value="Leghorn">Leghorn</ion-select-option>
+        <ion-select-option value="Plymouth Rock">Plymouth Rock</ion-select-option>
+        <ion-select-option value="Rhode Island Red">Rhode Island Red</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-input class="form-input" type="date" [(ngModel)]="livestock.dateOfBirth"
+        placeholder="Enter date of birth"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label class="form-label">Gender</ion-label>
+      <ion-select class="form-select" [(ngModel)]="livestock.gender">
+        <ion-select-option value="male">Male</ion-select-option>
+        <ion-select-option value="female">Female</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label class="form-label">Health</ion-label>
+      <ion-select class="form-select" [(ngModel)]="livestock.health">
+        <ion-select-option value="Excellent">Excellent</ion-select-option>
+        <ion-select-option value="fair">Fair</ion-select-option>
+        <ion-select-option value="poor">Poor</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-button class="form-button" expand="full" (click)="saveLivestock()">Save</ion-button>
+  </div>
 </ion-content>

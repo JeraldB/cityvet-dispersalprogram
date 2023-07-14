@@ -1,0 +1,51 @@
+<ion-header class="ion-no-border" [translucent]="true">
+  <ion-toolbar mode="md">
+    <ion-buttons slot="start">
+      <ion-button (click)="openMenu()">
+        <ion-avatar slot="end">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKr01ShBwrOVCXvnLmdQDgaVcBYW7PVbFgdf8Qi9sdSGfIQ-g__frQ6FOhfevYW1pbH4c&usqp=CAU" />
+        </ion-avatar>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button class="search-btn">
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+      <ion-button>
+        <!-- <ion-icon slot="icon-only" name="notifications-outline"></ion-icon> -->
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item class="ion-padding" style="margin-bottom:0; padding-bottom: 0;">
+    <div>
+      <h3 style="margin-bottom:0;">Service Availment
+      </h3>
+    </div>
+  </ion-item>
+  <form class="form">
+    <ion-item class="form-item">
+      <ion-label position="floating" class="form-label">Message</ion-label>
+      <ion-input type="text" name="description" required class="form-input"></ion-input>
+    </ion-item>
+    <ion-item class="form-item">
+      <ion-label position="floating" class="form-label">Referral Letter</ion-label>
+      <ion-input type="file" name="referralLetter" class="form-input" accept="image/*"
+        placeholder="Attach File"></ion-input>
+    </ion-item>
+
+    <ion-item class="form-item">
+      <ion-label position="floating" class="form-label">Resident Certificate</ion-label>
+      <ion-input type="file" name="residentCertificate" class="form-input" accept="image/*"
+        placeholder="Attach File"></ion-input>
+    </ion-item>
+    <ion-button expand="full" type="submit" class="form-button">Submit</ion-button>
+  </form>
+
+
+
+</ion-content>

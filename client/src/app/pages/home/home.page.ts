@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuController, ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +7,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
+  transactions: any[] = [
+    {
+      title: 'Transaction 1',
+      description: 'This is the description for Transaction 1.',
 
-  constructor() { }
+    },
+    {
+      title: 'Transaction 2',
+      description: 'This is the description for Transaction 2.',
+      date: '2023-07-02',
+    
+    },
+  ];
+  constructor(private menuController: MenuController) {}
 
-  ngOnInit() {
+  openMenu() {
+    this.menuController.enable(true, 'main-menu');
+    this.menuController.open('main-menu');
   }
 
+  ngOnInit() {}
 }

@@ -24,10 +24,12 @@ export class AddLivestocksComponent implements OnInit {
   saveLivestock() {
     // form fields in the ngModel bindings
     const newLivestock = {
-      earTag: this.livestock.earTag,
       breed: this.livestock.breed,
       animalType: this.livestock.animalType,
       dateOfBirth: this.livestock.dateOfBirth,
+      gender: this.livestock.gender,
+      health: this.livestock.health,
+      // livestockStatus: this.livestock.status,
     };
 
     console.log('New Livestock:', newLivestock); // test

@@ -33,6 +33,18 @@ const routes: Routes = [
         ],
       },
       {
+        path: 'home',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../home/home-routing.module').then(
+                (m) => m.HomePageRoutingModule
+              ),
+          },
+        ],
+      },
+      {
         path: 'dispersal',
         children: [
           {
@@ -52,6 +64,18 @@ const routes: Routes = [
             loadChildren: () =>
               import('../profile/profile-routing.module').then(
                 (m) => m.ProfilePageRoutingModule
+              ),
+          },
+        ],
+      },
+      {
+        path: 'availment',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../availment/availment-routing.module').then(
+                (m) => m.AvailmentPageRoutingModule
               ),
           },
         ],

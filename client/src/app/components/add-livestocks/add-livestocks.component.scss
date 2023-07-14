@@ -1,0 +1,32 @@
+.form-container {
+  margin: 20px;
+  padding: 20px;
+}
+
+.form-label {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.form-input,
+.form-select {
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.form-button {
+  margin-top: 24px;
+}
+
+@media (min-width: 576px) {
+  .form-container {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 992px) {
+  .form-container {
+    max-width: 600px;
+  }
+}

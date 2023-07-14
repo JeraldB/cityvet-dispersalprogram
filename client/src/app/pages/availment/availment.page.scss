@@ -1,0 +1,28 @@
+ion-toolbar {
+    --background: var(--ion-background-color, --td-bg);
+    padding: 1rem 0.3rem;
+    padding-bottom: 0;
+  
+    ion-icon,
+    i {
+      font-weight: lighter;
+      color: var(--ion-secondary-text-color);
+      font-size: 1.66rem;
+    }
+  
+    ion-button.search-btn {
+      margin-right: 0.2rem;
+    }
+  
+    ion-avatar {
+      height: 2rem;
+      width: 2rem;
+      border: 1px solid var(--ion-color-tertiary);
+      img {
+        max-width: 100%;
+      }
+    }
+  }
+  h3 {
+    font-weight: 600;
+  }

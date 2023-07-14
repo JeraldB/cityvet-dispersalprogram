@@ -1,6 +1,20 @@
-.Title{
-    transform: translateX(15px);
-}
-.heading{
-    transform: translateX(15px);
-}
+.heading {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  ion-item {
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  ion-badge {
+    margin-top: 8px;
+  }
+  
+  ion-button {
+    --padding-start: 0;
+    --padding-end: 0;
+    font-size: 14px;
+  }
