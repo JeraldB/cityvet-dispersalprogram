@@ -8,6 +8,8 @@ router.post("/service", availmentController.createAvailment);
 router.put("/service/:availmentId/accept", availmentController.acceptAvailment);
 router.put("/service/:availmentId/reject", availmentController.rejectAvailment);
 router.get("/allService", availmentController.getAllAvailments);
-router.get("/edit/availmentId", availmentController.editAvailment);
+router.put("/edit/:availmentId", availmentController.editAvailment);
 
 module.exports = router;
+
+
