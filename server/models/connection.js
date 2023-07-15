@@ -49,4 +49,14 @@ db.benefeciary.belongsTo(db.users, { foreignKey: "userId" });
 db.users.hasMany(db.availments, { foreignKey: "userId", as: "availments" });
 db.availments.belongsTo(db.users, { foreignKey: "userId", as: "user" });
 
+db.dispersal.belongsTo(db.benefeciary, { foreignKey: 'benefeciaryId', as: 'beneficiary' });
+db.dispersal.belongsTo(db.livestock, { foreignKey: 'livestockId', as: 'livestock' });
+
+db.transaction.belongsTo(db.dispersal, { foreignKey: 'dispersalId', as: 'dispersal' });
+db.transaction.belongsTo(db.benefeciary, { foreignKey: 'benefeciaryId', as: 'beneficiary' });
+
+
+
+
+
 module.exports = db;

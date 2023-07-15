@@ -81,6 +81,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.FLOAT,
       allowNull: true,
     },
+    isDispersed:{
+      type:DataTypes.BOOLEAN,
+     defaultValue:null,
+
+  }
   });
 
   return Livestock;
