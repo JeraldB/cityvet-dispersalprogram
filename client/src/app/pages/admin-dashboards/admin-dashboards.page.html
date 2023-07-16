@@ -1,57 +1,81 @@
 
 <!--HOME CONTENTS----------------------------------------------------------->
-
-<ion-content>
-
-  <ion-header>
-    <ion-toolbar>
-      <ion-title>CITYVET</ion-title>
-   
-    
-  <!--ION MODAL----------------------------------------------------------->
-  
-  
-      <div class="ion-page">
-        <ion-button fill="clear" id="open-modal" size="large" >
-          <ion-icon name="notifications-outline" class="notif"></ion-icon>
-          <ion-badge slot="end">4</ion-badge>
-        </ion-button>
+<ion-header>
+  <ion-toolbar>
+    <ion-title slot="start">CITYVET</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" id="open-modal">
+        <ion-icon name="notifications-outline"></ion-icon>
         <ion-modal #modal trigger="open-modal" [presentingElement]="presentingElement">
           <ng-template>
             <ion-header>
-              <ion-toolbar> 
+              <ion-toolbar>
                 <ion-title>Notification</ion-title>
                 <ion-buttons slot="end">
                   <ion-button (click)="modal.dismiss()">Close</ion-button>
                 </ion-buttons>
               </ion-toolbar>
             </ion-header>
+            <!--Ion Modal Notification Content----------------------------------------------------------->   
+
             <ion-content>
+
               <ion-list>
-                
                 <ion-item-sliding>
                   <ion-item-options side="start">
-                    <ion-item-option id="present-alert" color="success" expandable>Approve</ion-item-option>
-                    <ion-alert
+                    <ion-item-option id="present-alert" color="success" expandable> Approved </ion-item-option>
+                    <ion-alert 
                     trigger="present-alert"
                     header="Approved?"
                     message="This will be Beneficiary"
-                    [buttons]="alertButton"
-                    ></ion-alert>
+                    [buttons]="alertButton">
+                  </ion-alert>
                   </ion-item-options>
-              
+
                   <ion-item>
                     <ion-avatar slot="start">
-                      <ion-img src="../../assets/icon/favicon.png"></ion-img>
+                      <ion-img src="../../../assets/icon/favicon.png">
+                      </ion-img>
                     </ion-avatar>
                     <ion-label>
-                      <h2>Prince Gerald Asilo</h2>
-                      <p>Full-Stack Web Dev./Data Scientist</p>
+                      <h2>Name: Sample Jerald</h2>
+                      <p>Address : Sample Tangisan</p>
                     </ion-label>
                   </ion-item>
-              
+
+
+<!--Ion Modal Notification / Modals for Application info ----------------------------------------------------------->
+
                   <ion-item-options side="end">
-                    <ion-item-option>Check</ion-item-option>
+                    <ion-item-option id="present_alert" (click)="setOpen(true)"> Check </ion-item-option>
+                    
+                    <ion-modal [isOpen]="isModalOpen">
+                      <ng-template>
+                        <ion-header>
+                          <ion-toolbar>
+                            <ion-title>Application Information</ion-title>
+                            <ion-buttons slot="end">
+                              <ion-button (click)="setOpen(false)">Close</ion-button>
+                            </ion-buttons>
+                          </ion-toolbar>
+                        </ion-header>
+                        <ion-content class="ion-padding">
+                          <ion-item>
+                            <ion-label>Name: </ion-label>
+                          </ion-item>
+                          <ion-item>
+                            <ion-label>Age: </ion-label>
+                          </ion-item>
+                          <ion-item>
+                            <ion-label>Address: </ion-label>
+                          </ion-item>
+                          <ion-item>
+                            <ion-label>Dispersed or Beneficiary </ion-label>
+                          </ion-item>
+                        </ion-content>
+                      </ng-template>
+                    </ion-modal>
+
                     <ion-item-option id="present-alerts" color="danger" expandable>Delete</ion-item-option>
                     <ion-alert
                       trigger="present-alerts"
@@ -60,106 +84,50 @@
                       [buttons]="alertButton"
                     ></ion-alert>
                   </ion-item-options>
+
                 </ion-item-sliding>
-  
-                <ion-item-sliding>
-                  <ion-item-options side="start">
-                    <ion-item-option color="success" expandable>Approve</ion-item-option>
-                  </ion-item-options>
-              
-                  <ion-item>
-                    <ion-avatar slot="start">
-                      <ion-img src="../../assets/icon/favicon.png"></ion-img>
-                    </ion-avatar>
-                    <ion-label>
-                      <h2>Jerald Banalan</h2>
-                      <p>Data Scientist</p>
-                    </ion-label>
-                  </ion-item>
-              
-                  <ion-item-options side="end">
-                    <ion-item-option>Check</ion-item-option>
-                    <ion-item-option color="danger" expandable>Delete</ion-item-option>
-                  </ion-item-options>
-                </ion-item-sliding>
-  
-  
-                <ion-item-sliding>
-                  <ion-item-options side="start">
-                    <ion-item-option color="success" expandable>Approve</ion-item-option>
-                  </ion-item-options>
-              
-                  <ion-item>
-                    <ion-avatar slot="start">
-                      <ion-img src="../../assets/icon/favicon.png"></ion-img>
-                    </ion-avatar>
-                    <ion-label>
-                      <h2>Maher Calingasan</h2>
-                      <p>Full-Stack Web Dev.</p>
-                    </ion-label>
-                  </ion-item>
-              
-                  <ion-item-options side="end">
-                    <ion-item-option>Check</ion-item-option>
-                    <ion-item-option color="danger" expandable>Delete</ion-item-option>
-                  </ion-item-options>
-                </ion-item-sliding>
-  
-  
-                <ion-item-sliding>
-                  <ion-item-options side="start">
-                    <ion-item-option color="success" expandable>Approve</ion-item-option>
-                  </ion-item-options>
-              
-                  <ion-item>
-                    <ion-avatar slot="start">
-                      <ion-img src="../../assets/icon/favicon.png"></ion-img>
-                    </ion-avatar>
-                    <ion-label>
-                      <h2>Bahala na basta papasa kami</h2>
-                      <p>Waiting sayo</p>
-                    </ion-label>
-                  </ion-item>
-              
-                  <ion-item-options side="end">
-                    <ion-item-option>Check</ion-item-option>
-                    <ion-item-option color="danger" expandable>Delete</ion-item-option>
-                  </ion-item-options>
-                </ion-item-sliding>
-  
-  
               </ion-list>
+
             </ion-content>
           </ng-template>
         </ion-modal>
-      </div>
-      
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content>
+
+<!----  <div>
+    <ion-item>
+      <ion-label slot="start"><h1>CITYVET</h1>
+      </ion-label>
+    </ion-item>
+
+
+
+    <ion-buttons slot="end">
+      <ion-button fill="clear">
+        <ion-icon name="notifications-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    
+  </div> -->
   
-    </ion-toolbar>
-  </ion-header>
-  
-  <!--END  MODAL----------------------------------------------------------->
+  <!--END  MODAL Notification----------------------------------------------------------->
   
   
   <ion-content>
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Livestock Management System</ion-card-title>
-    </ion-card-header>
-    <ion-card-content style="text-align: justify;">
-      A livestock management system is a comprehensive software solution designed to assist farmers and 
-    livestock owners in effectively managing their animal-related operations.
-     It enables users to streamline and automate various tasks involved in livestock management,
-      such as tracking animal health, monitoring breeding and reproduction.
-    </ion-card-content>
-  </ion-card>
+
     
   <!--ADMIN SWIPER MODULE ----------------------------------------------------------->
   
   <div class="admin-swiper">
     <h3>NEW  APPROVED BENEFICIARY</h3>
   
-  <swiper-container class="admin-swiper" [slidesPerView]="1.2" (slidechange) = "swiperSlideChanged($event)" [loop]="true" [pagination]="true">
+  <swiper-container class="admin-swiper" [slidesPerView]="1.2" (slidechange) = "swiperSlideChanged($event)" [loop]="true">
   
     <swiper-slide>
       <ion-card class="admin-swipe">
@@ -228,39 +196,70 @@
   </swiper-container>
   </div>
   
-  <div class="admin-total">
-    <ion-card>
-      <ion-item>
-       <ion-thumbnail>
-         <ion-img src="../../../assets/images/logo.png"></ion-img>
-        </ion-thumbnail>
-        <ion-label><H1>Total Beneficiary :</H1></ion-label>
-        <ion-text><h1>153</h1></ion-text>
+  <ion-content class="ion-padding" style="margin-top:0; padding-top: -45;">
+    <div class="dashboard-grid">
+      <div class="grid-item">
+        <ion-card style="border-radius: 15px; background-color: rgba(151, 173, 190, 0.409);">
+          <ion-card-header>
+            <div
+              style="background-color: rgb(255, 255, 255); width:40px; height:40px; display: flex; justify-content:center; align-items:center; border-radius:10px;">
+              <ion-icon name="analytics-sharp"></ion-icon>
+            </div>
+            <ion-card-title style="font-weight: 600;">Total Livestock</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <h2 class="value-offspring">{{ calculateOffspringCount() }}</h2>
+          </ion-card-content>
+        </ion-card>
+      </div>
+      <div>
+        <ion-fab horizontal="end">
+         
+        </ion-fab>
+        <!-- <ion-button expand="full" (click)="dashboardOpenModal()">Manage</ion-button> -->
+      </div>
+      <ion-item style="margin-bottom:0; padding-bottom: 0;">
+        <div>
+          <h3 style="margin-bottom:0;">Cityvet
+          </h3>
+          <div>
+            <p style="margin-top:0; font-weight: 100; ">Track your Livestock offspring!</p>
+          </div>
+        </div>
       </ion-item>
-   </ion-card>
-   
-   <ion-card>
-     <ion-item>
-      <ion-thumbnail>
-        <ion-img src="../../../assets/images/logo.png"></ion-img>
-       </ion-thumbnail>
-       <ion-label><H1>Total Livestock :</H1></ion-label>
-       <ion-text><h1>143</h1></ion-text>
-     </ion-item>
-   </ion-card>
-   
-   <ion-card>
-     <ion-item>
-      <ion-thumbnail>
-        <ion-img src="../../../assets/images/logo.png"></ion-img>
-       </ion-thumbnail>
-       <ion-label><H1>Total Dispersed Livestock :</H1></ion-label>
-       <ion-text><h1>123</h1></ion-text>
-     </ion-item>
-   </ion-card>
-  </div>
-  <br><br><br>
-  
-  </ion-content>
+      <div class="grid-item">
+        <ion-card style="border-radius: 10px;">
+          <ion-card-header>
+            <ion-card-title>Livestock Overview</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <canvas id="myChart"></canvas>
+          </ion-card-content>
 
+        </ion-card>
+
+      </div>
+      <div>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Stocks Overviews</ion-card-title>
+          </ion-card-header>
+          <ion-card-content style="text-align: center;">
+            <ion-label>DITO MO LAGAY CONTENT MO "Kunwari Bar Graph"</ion-label>
+            <ion-grid>
+              <ion-row>
+                <ion-col style="border-color: black;">Livestock lagay_1</ion-col>
+                <ion-col>Beneficiary lagay_2</ion-col>
+                <ion-col>Dispersal lagay_3</ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card-content>
+        </ion-card>
+      </div>
+
+    </div>
+  </ion-content>
+  <br><br><br>
+  </ion-content>
+  <br><br><br>
 </ion-content>

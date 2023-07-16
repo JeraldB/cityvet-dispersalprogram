@@ -1,8 +1,5 @@
 ion-content, .body-background{
-    --background: url("../../../assets/images/background1.png") no-repeat center center fixed;
-    -webkit-background-size:cover;
-    -moz-background-size:cover ;
-    --background-size: cover;
+    text-align: center;
 }
 .ion-page{
     width: 100px;
@@ -13,16 +10,25 @@ ion-content, .body-background{
     border-radius: 10px;
 }
 #open-modal{
-    position: fixed;
-    transform: translateX(10px);
+    position: relative;
 }
 .admin-swipe{
     border-radius: 20px;
 }
 #swipes{
-    --ion-background-color: radial-gradient(rgb(194, 220, 182), rgb(101, 212, 164));
+
+    --ion-background-color: radial-gradient(rgb(255, 255, 255), rgb(233, 233, 233));
     opacity: 0.9;
+    border-radius: 20px;
+    box-shadow: 0 8px 6px -6px rgb(168, 167, 167);
  }
- .admin-total{
+
+.admin-total{
     opacity: 0.8;
-}
+    margin: 0;
+ }
+ ion-grid{
+    margin: 0;
+ }
+
+ 
