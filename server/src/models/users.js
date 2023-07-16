@@ -17,13 +17,18 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING(50),
       allowNull: false,
     },
-    age: {
-      type: DataTypes.INTEGER,
+    birthDate: {
+      type: DataTypes.DATEONLY,
+      allowNull: false
+    },
+    userName: {
+      type: DataTypes.STRING(50),
       allowNull: false,
+      unique: true,
     },
     email: {
       type: DataTypes.STRING(50),
-      allowNull: false,
+      allowNull: true,
       unique: true,
     },
     password: {
@@ -31,5 +36,16 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
   });
+  User.beforeSave(async (user, options) => {
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear();
+    const birthDate = new Date(user.birthDate);
+  
+    // Update the birthDate to the current year
+    birthDate.setFullYear(currentYear);
+  
+    user.birthDate = birthDate;
+  });
+  
   return User;
 };

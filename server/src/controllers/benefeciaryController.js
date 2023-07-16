@@ -21,7 +21,7 @@ const benefeciaryController = {
   updateBenefeciary: async (req, res) => {
     try {
       const { benefeciaryId } = req.params;
-      const { fullname, address, contact, age, email, password } = req.body;
+      const { fullname, address, contact, birthDate, email, password } = req.body;
 
       const benefeciary = await Benefeciary.findByPk(benefeciaryId, {
         include: {
@@ -37,7 +37,7 @@ const benefeciaryController = {
       benefeciary.user.fullname = fullname;
       benefeciary.user.address = address;
       benefeciary.user.contact = contact;
-      benefeciary.user.age = age;
+      benefeciary.user.birthDate = birthDate;
       benefeciary.user.email = email;
       
       if (password) {

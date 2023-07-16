@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: DataTypes.NOW,
     },
     description: {
-      type: DataTypes.STRING(50),
+      type: DataTypes.STRING(150),
       allowNull: false,
     },
 

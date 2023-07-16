@@ -27,25 +27,25 @@
       </h3>
     </div>
   </ion-item>
-  <form class="form">
-    <ion-item class="form-item">
-      <ion-label position="floating" class="form-label">Message</ion-label>
-      <ion-input type="text" name="description" required class="form-input"></ion-input>
+  <form (ngSubmit)="onSubmit(form.value)" #form="ngForm">
+    <ion-item class="form-item" >
+      <ion-textarea label="Message" labelPlacement="floating" type="text" fill="solid" name="description" required class="form-input" [(ngModel)]="formValue.description" [counter]="true" maxlength="150"></ion-textarea>
     </ion-item>
     <ion-item class="form-item">
       <ion-label position="floating" class="form-label">Referral Letter</ion-label>
       <ion-input type="file" name="referralLetter" class="form-input" accept="image/*"
-        placeholder="Attach File"></ion-input>
+        placeholder="Attach File" [(ngModel)]="formValue.referralLetter"></ion-input>
     </ion-item>
 
     <ion-item class="form-item">
       <ion-label position="floating" class="form-label">Resident Certificate</ion-label>
       <ion-input type="file" name="residentCertificate" class="form-input" accept="image/*"
-        placeholder="Attach File"></ion-input>
+        placeholder="Attach File" [(ngModel)]="formValue.residentCertificate"></ion-input>
     </ion-item>
     <ion-button expand="full" type="submit" class="form-button">Submit</ion-button>
   </form>
 
 
+  
 
 </ion-content>

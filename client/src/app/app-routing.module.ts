@@ -54,7 +54,7 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'user-tabs',
+    path: 'user',
     loadChildren: () =>
       import('./pages/user-tabs/user-tabs.module').then(
         (m) => m.UserTabsPageModule
@@ -94,7 +94,8 @@ const routes: Routes = [
       import('./pages/admin-dispersal/admin-dispersal.module').then(
         (m) => m.AdminDispersalPageModule
       ),
-  },  {
+  },
+  {
     path: 'profile',
     loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
   },
