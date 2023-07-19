@@ -37,6 +37,11 @@ running the client side
 ionic serve
 ```
 
+### Database Set-up
+```
+create a database on xamp name cityvet_livestock_program_db 
+```
+
 #### Server Environment
 
 install dependencies and package
