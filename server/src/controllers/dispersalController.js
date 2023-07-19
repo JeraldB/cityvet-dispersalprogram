@@ -39,6 +39,30 @@ const dispersalController = {
       res.status(500).json({ error: 'Internal server error' });
     }
   },
+  getDispersedLivestockForBeneficiary: async (req, res) => {
+    try {
+      const { benefeciaryId } = req.params;
+      const beneficiary = await Beneficiary.findByPk(benefeciaryId, {
+        include: [
+          {
+            model: Livestock,
+            where: { isDispersed: true }, // Assuming 'isDispersed' is a flag to indicate whether the livestock is dispersed or not.
+          },
+        ],
+      });
+
+      if (!beneficiary) {
+        return res.status(404).json({ error: "Beneficiary not found" });
+      }
+
+      const dispersedLivestock = beneficiary.livestocks; // Assuming you have defined 'livestocks' as the name of the association in the Beneficiary model.
+
+      res.status(200).json({ livestock: dispersedLivestock });
+    } catch (error) {
+      console.error("Error fetching dispersed livestock:", error);
+      res.status(500).json({ error: "Internal server error" });
+    }
+  },
 };
 
 module.exports = dispersalController;

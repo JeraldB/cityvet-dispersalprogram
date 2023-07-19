@@ -10,7 +10,7 @@
     <ion-label>
       benefeciary
     </ion-label>
-    <ion-select placeholder="all" [(ngModel)]="selectedBeneficiary" (ionChange)="onBeneficiarySelect">
+    <ion-select placeholder="all">
       <ion-select-option value="barangay">Barangay</ion-select-option>
       <ion-select-option value="barangay">FirstName</ion-select-option>
       <ion-select-option value="barangay">LastName</ion-select-option>
@@ -28,12 +28,13 @@
 
   <!--INFINITE SCROLL------------------------------------------------------>
 
-  <ion-list>
-    <ion-item *ngFor="let item of items; let index">
-      <ion-avatar slot="start">
-        <img [src]="'https://picsum.photos/80/80?random=' + index" alt="avatar" />
-      </ion-avatar>
-      <ion-label>{{ item }}</ion-label>
+  <ion-list *ngIf="beneficiaries">
+    <ion-item *ngFor="let beneficiary of beneficiaries">
+      <ion-label>
+        <h2>{{ beneficiary.user.fullname }}</h2>
+        <p>Email: {{ beneficiary.user.email }}</p>
+        <p>Contact: {{ beneficiary.user.contact }}</p>
+      </ion-label>
     </ion-item>
   </ion-list>
   <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">

@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const authenticate = require('../global/middlewares/authenticate');
-const userController = require('../controllers/usersController');
+const {authenticateToken} = require('../global/middlewares/authenticate');
+const userController = require("../controllers/usersController")
 
-router.get('/profile', authenticate, userController.getUserProfile);
-router.put('/edit', authenticate, userController.updateUserProfile);
-router.delete('/delete', authenticate, userController.deleteUserProfile);
+
+router.get('/profile',authenticateToken, userController.getProfile);
+router.put('/edit', authenticateToken, userController.updateProfile);
+router.delete('/delete', authenticateToken, userController.deleteProfile);
 
 module.exports = router;

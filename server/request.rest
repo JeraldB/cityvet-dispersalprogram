@@ -1,0 +1,14 @@
+
+POST http://localhost:8000/api/auth/login/user
+Content-Type: application/json
+
+{
+  "email": "kana@",
+  "password": "123"
+}
+
+###
+GET http://localhost:8000/api/user/profile
+
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIzLCJpYXQiOjE2ODk3NTczOTgsImV4cCI6MTY4OTc1ODI5OH0.dRjUp1IzR9lglGG_sXdh2l78ZrpgO6q77mrktivqYwM
+###

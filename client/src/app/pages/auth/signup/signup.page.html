@@ -8,23 +8,68 @@
 
 <ion-content class="ion-padding">
   <img src="../../assets/images/logo.png" class="logo" />
-  <div class="title">
-    <h4>Signup</h4>
-    <p>Create your account</p>
-  </div>
 
-  <ion-input placeholder="Email" type="email" class="primary-input"></ion-input>
-  <ion-input placeholder="First Name" class="primary-input"></ion-input>
-  <ion-input placeholder="Last Name" class="primary-input"></ion-input>
-  <ion-input placeholder="Password" type="password" class="primary-input"></ion-input>
-  <ion-input placeholder="Address" class="primary-input"></ion-input>
+  <form #signupForm="ngForm">
+    <div *ngIf="currentSection === 1">
+      <div class="title">
+        <h4>Register</h4>
+        <p>Create your account</p>
+      </div>
+      <ion-input label="Email" type="email" name="email" class="primary-input" [(ngModel)]="userData.email" required></ion-input>
+      <ion-input label="Full Name" name="fullname" class="primary-input" [(ngModel)]="userData.fullname" required></ion-input>
+      <ion-input label="Contact" name="contact" class="primary-input" [(ngModel)]="userData.contact" required></ion-input>
+      <ion-input label="Address" name="address" class="primary-input" [(ngModel)]="userData.address" required></ion-input>
+      <ion-button class="custom-button" expand="block" shape="round" (click)="nextSection()">Next</ion-button>
+    </div>
+
+    <div *ngIf="currentSection === 2">
+      <div class="title">
+        <h4>Register</h4>
+        <p>Pick a username</p>
+      </div>
+      <ion-item>
+        <ion-label position="floating">
+          <ion-icon name="person"></ion-icon>
+          Username
+        </ion-label>
+        <ion-input name="userName" class="primary-input" [(ngModel)]="userData.userName" required></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label position="floating">
+          <ion-icon name="lock-closed"></ion-icon>
+          Password
+        </ion-label>
+        <ion-input class="primary-input" [type]="type" name="password" [(ngModel)]="userData.password" placeholder="Password"></ion-input>
+        <ion-icon slot="end" (click)="togglePasswordVisibility()" [name]="type === 'password' ? 'eye-off-outline' : 'eye-outline'"></ion-icon>
+      </ion-item>
+      <div class="title">
+        <p>Password must be at least 8 characters</p>
+      </div>
+      <ion-button class="custom-button" expand="block" shape="round" (click)="nextSection()">Next</ion-button>
+      <ion-button expand="block" class="ion-margin-top custom-outline-button" fill="outline" color="white" shape="round"
+        (click)="previousSection()">Previous</ion-button>
+    </div>
+
+    <div *ngIf="currentSection === 3">
+      <div class="title">
+        <h4>Register</h4>
+        <p>Enter your birthday</p>
+      </div>
+
+      <ion-label>Date of Birth</ion-label>
+      <ion-input (click)="openDatePicker()" [(ngModel)]="userData.birthDate"  placeholder="YYYY-MM-DD" name="birthDate"></ion-input>
 
 
-  <p>By signing up you're agreed to our Terms & Conditions</p>
 
-  <div class="ion-margin-top">
-    <ion-button class="custom-button" expand="block" shape="round">SIGN UP</ion-button>
-  </div>
+      <ion-button expand="block" class="ion-margin-top custom-outline-button" fill="outline" color="white" shape="round"
+        (click)="previousSection()">Previous</ion-button>
+      <ion-button class="custom-button" expand="block" shape="round" (click)="submitForm()">Create an Account</ion-button>
+    </div>
+  </form>
+
+  <p>By signing up, you agree to our Terms & Conditions</p>
+
   <div class="ion-margin-top ion-text-center">
     <a [routerLink]="['/login']">Already have an account</a>
   </div>

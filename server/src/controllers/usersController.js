@@ -1,50 +1,61 @@
 const db = require('../models/connection');
 const User = db.users
-const getUserProfile = async (req, res) => {
-  try {
-    const { userId } = req.user;
-    const user = await User.findByPk(userId);
-    res.json({ user });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: 'Internal server error' });
+
+const usersController = {
+  getProfile: (req, res) => {
+    const userId = req.user.userId;
+
+    User.findByPk(userId)
+      .then((user) => {
+        if (!user) {
+          return res.status(404).json({ message: "User not found" });
+        }
+
+        return res.json(user);
+      })
+      .catch((err) => {
+        console.error("Error fetching user:", err);
+        res.status(500).json({ message: "Internal Server Error" });
+      });
+  },
+
+  updateProfile: (req, res) => {
+    const userId = req.user.userId;
+    const { fullname, address, contact, birthDate, userName, email } = req.body;
+
+    User.update(
+      { fullname, address, contact, birthDate, userName, email },
+      { where: { userId } }
+    )
+      .then((result) => {
+        if (result[0] === 0) {
+          return res.status(404).json({ message: "User not found" });
+        }
+
+        res.json({ message: "Profile updated successfully" });
+      })
+      .catch((err) => {
+        console.error("Error updating user:", err);
+        res.status(500).json({ message: "Internal Server Error" });
+      });
+  },
+
+  deleteProfile: (req, res) => {
+    const userId = req.user.userId;
+
+    User.destroy({ where: { userId } })
+      .then((result) => {
+        if (result === 0) {
+          return res.status(404).json({ message: "User not found" });
+        }
+
+        res.json({ message: "Profile deleted successfully" });
+      })
+      .catch((err) => {
+        console.error("Error deleting user:", err);
+        res.status(500).json({ message: "Internal Server Error" });
+      });
   }
 };
 
-const updateUserProfile = async (req, res) => {
-  try {
-    const { userId } = req.user;
-    const { fullname, address, contact, birthDate, email } = req.body;
-
-    const user = await User.findByPk(userId);
-    user.fullname = fullname;
-    user.address = address;
-    user.contact = contact;
-    user.birthDate = birthDate;
-    user.email = email;
-
-    await user.save();
-
-    res.json({ message: 'Profile updated successfully' });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: 'Internal server error' });
-  }
-};
-
-const deleteUserProfile = async (req, res) => {
-  try {
-    const { userId } = req.user;
-    await User.destroy({ where: { userId } });
-    res.json({ message: 'Profile deleted successfully' });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: 'Internal server error' });
-  }
-};
-
-module.exports = {
-  getUserProfile,
-  updateUserProfile,
-  deleteUserProfile,
-};
+module.exports = usersController;

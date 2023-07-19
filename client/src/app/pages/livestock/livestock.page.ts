@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DispersedLivestockApi } from './api.livestock';
 
 @Component({
   selector: 'app-livestock',
@@ -6,10 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./livestock.page.scss'],
 })
 export class LivestockPage implements OnInit {
-
+  dispersedLivestock: any[] = [];
   selectedBeneficiary: any;
 
-  constructor() {}
+  constructor(private DispersedLivestockApi:DispersedLivestockApi) {}
 
   ngOnInit() {}
 

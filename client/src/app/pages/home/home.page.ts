@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController, ModalController } from '@ionic/angular';
+import { UserApi } from './api.user';
+import { User } from './user.model';
+import { AuthenticationService } from 'src/app/auth/authentication.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-home',
@@ -20,12 +24,35 @@ export class HomePage implements OnInit {
     
     },
   ];
-  constructor(private menuController: MenuController) {}
+  constructor(private menuController: MenuController,private userApi: UserApi,private AuthenticationService: AuthenticationService
+    ,private cookieService: CookieService) {
+
+    
+  }
+ 
+ 
 
   openMenu() {
     this.menuController.enable(true, 'main-menu');
     this.menuController.open('main-menu');
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getUserProfile();
+    }
+  
+  
+  user: any; 
+  getUserProfile() {
+
+    this.userApi.getUserProfile().subscribe({
+       next : (user: User) => {
+          this.user = user;
+          console.log('User Profile:', this.user);
+        },
+        error :(error: any) => {
+          console.error('Failed to fetch user profile:', error);
+        }
+  });
+    }
 }

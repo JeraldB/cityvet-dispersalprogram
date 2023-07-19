@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Select Date
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-item>
+    <ion-label>Date</ion-label>
+    <ion-datetime
+      displayFormat="YYYY-MM-DD"
+      [(ngModel)]="selectedDate"
+    ></ion-datetime>
+  </ion-item>
+  <ion-button expand="full" (click)="selectDate()">Select</ion-button>
+</ion-content>

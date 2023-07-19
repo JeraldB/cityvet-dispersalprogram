@@ -8,12 +8,21 @@
     <h4>Login</h4>
     <p>Lets get started</p>
   </div>
-  <ion-item class="primary-input">
-    <ion-label position="floating">Username</ion-label>
-    <ion-input placeholder="Enter your username" class="primary-input" required></ion-input> </ion-item>
-  <ion-item class="primary-input">
-    <ion-label position="floating">Password</ion-label>
-    <ion-input placeholder="Password" type="password"></ion-input>
+  <ion-item>
+    <ion-label position="floating">
+      <ion-icon name="mail"></ion-icon>
+      Email
+    </ion-label>
+    <ion-input [(ngModel)]="userData.email" placeholder="Enter your email" class="primary-input" required></ion-input>
+  </ion-item>
+  
+  <ion-item>
+    <ion-label position="floating">
+      <ion-icon name="lock-closed"></ion-icon>
+      Password
+    </ion-label>
+    <ion-input placeholder="Password" [type]="showPassword ? 'text' : 'password'" [(ngModel)]="userData.password"></ion-input>
+    <ion-icon slot="end" [name]="showPassword ? 'eye-off-outline' : 'eye-outline'" (click)="togglePasswordVisibility()"></ion-icon>
   </ion-item>
 
   <div class="ion-margin-top ion-text-right forget">
@@ -21,7 +30,7 @@
   </div>
 
   <div class="ion-margin-top">
-    <ion-button class="custom-button" expand="block" shape="round" routerLink="/user/home">LOGIN</ion-button>
+    <ion-button class="custom-button" expand="block" shape="round" (click)="loginUser()">LOGIN</ion-button>
   </div>
   <div class="ion-margin-top ion-text-center">
     <a routerLink="/signup">Create account</a>

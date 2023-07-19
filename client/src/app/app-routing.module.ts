@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuardService } from './auth/auth-guard.service';
 
 const routes: Routes = [
   {
@@ -10,7 +11,7 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () =>
-      import('./pages/home/home.module').then((m) => m.HomePageModule),
+      import('./pages/home/home.module').then((m) => m.HomePageModule), canActivate: [AuthGuardService],
   },
   {
     path: 'login',
@@ -51,14 +52,14 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/livestock/livestock.module').then(
         (m) => m.LivestockPageModule
-      ),
+      ), canActivate: [AuthGuardService],
   },
   {
     path: 'user',
     loadChildren: () =>
       import('./pages/user-tabs/user-tabs.module').then(
         (m) => m.UserTabsPageModule
-      ),
+      ),canActivate: [AuthGuardService],
   },
   {
     path: 'admin-tabs',
@@ -97,7 +98,7 @@ const routes: Routes = [
   },
   {
     path: 'profile',
-    loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
+    loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule), canActivate: [AuthGuardService],
   },
   {
     path: 'dispersal',
@@ -105,7 +106,7 @@ const routes: Routes = [
   },
   {
     path: 'availment',
-    loadChildren: () => import('./pages/availment/availment.module').then( m => m.AvailmentPageModule)
+    loadChildren: () => import('./pages/availment/availment.module').then( m => m.AvailmentPageModule), canActivate: [AuthGuardService],
   },
   {
     path: 'about',

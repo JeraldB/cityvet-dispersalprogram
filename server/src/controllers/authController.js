@@ -1,176 +1,123 @@
 const db = require("../models/connection")
 const User = db.users
 const Admin = db.admins
-
 const bcrypt = require("bcrypt");
-const { AccessToken, RefreshToken, verifyAccessToken,
-    verifyRefreshToken}= require("../global/utils/jwt")
+const { generateAccessToken, generateRefreshToken } = require("../global/utils/jwt");
 
+const authController = {
+  loginUser: (req, res) => {
+    const { email, password } = req.body;
 
-const authControllers = {
-    registerUser : async (req, res) => {
-        try {
-          const { fullname, address, contact, birthDate, userName, email, password } = req.body;
-          const existingUser = await User.findOne({ where: { email } });
-      
-          if (existingUser) {
-            return res.status(409).json({ message: 'User already exists' });
+    User.findOne({ where: { email } })
+      .then((user) => {
+        if (!user) {
+          return res.status(404).json({ message: "User not found" });
+        }
+
+        bcrypt.compare(password, user.password, (err, result) => {
+          if (err || !result) {
+            return res.status(401).json({ message: "Authentication failed" });
           }
-      
-          // Hash the pw
-          const hashedPassword = await bcrypt.hash(password, 10);
-      
-          // Create a new user in the User 
-          const newUser = await User.create({
-            fullname,
-            address,
-            contact,
-            birthDate,
-            userName,
-            email,
-            password: hashedPassword,
+
+          const accessToken = generateAccessToken(user.userId, "user");
+          const refreshToken = generateRefreshToken(user.userId, "user");
+
+          res.cookie("access_token", accessToken, {
+            httpOnly: true,
+            maxAge: 15 * 60 * 1000, // 15 minutes
           });
-      
-          res.status(201).json({ message: 'User registered successfully' });
-        } catch (err) {
-          console.error(err);
-          res.status(500).json({ message: 'Internal server error' });
-        }
-      },
-      
-      registerAdmin : async (req, res) => {
-        try {
-          const { userName, email, password } = req.body;
-      
-          // Check if the admin already exists
-          const existingAdmin = await Admin.findOne({ where: { email } });
-      
-          if (existingAdmin) {
-            return res.status(409).json({ message: 'Admin already exists' });
-          }
-      
-          // Hash the pw
-          const hashedPassword = await bcrypt.hash(password, 10);
-      
-          const newAdmin = await Admin.create({
-            userName,
-            email,
-            password: hashedPassword,
+
+          res.cookie("refresh_token", refreshToken, {
+            httpOnly: true,
+            maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
           });
-      
-          res.status(201).json({ message: 'Admin registered successfully' });
-        } catch (err) {
-          console.error(err);
-          res.status(500).json({ message: 'Internal server error' });
-        }
-      },
-    loginUser : async (req, res) => {
-        try {
-          const { email, password } = req.body;
-      
-          // Check if the user exists in the User model
-          const user = await User.findOne({ where: { email } });
-      
-          if (!user) {
-            return res.status(401).json({ message: 'Invalid email or password' });
-          }
-      
-          // Compare the provided password with the stored hashed password in the User model
-          const passwordMatch = await bcrypt.compare(password, user.password);
-      
-          if (!passwordMatch) {
-            return res.status(401).json({ message: 'Invalid email or password' });
-          }
-      
-          // User authentication successful
-          //  an access token and a refresh token
-          const accessToken = AccessToken({ id: user.id });
-          const refreshToken = RefreshToken({ id: user.id });
-      
-          res.json({ accessToken, refreshToken });
-        } catch (err) {
-          console.error(err);
-          res.status(500).json({ message: 'Internal server error' });
-        }
-      },
-      loginAdmin : async (req, res) => {
-        try {
-          const { email, password } = req.body;
-      
-          // Check if the admin exists in the Admin model
-          const admin = await Admin.findOne({ where: { email } });
-      
-          if (!admin) {
-            return res.status(401).json({ message: 'Invalid email or password' });
-          }
-      
-          // Compare the provided password with the stored hashed password in the Admin model
-          const passwordMatch = await bcrypt.compare(password, admin.password);
-      
-          if (!passwordMatch) {
-            return res.status(401).json({ message: 'Invalid email or password' });
-          }
-      
-          // Admin authentication successful
-          //  an access token and a refresh token
-          const accessToken = AccessToken({ id: admin.id });
-          const refreshToken = RefreshToken({ id: admin.id });
-      
-          res.json({ accessToken, refreshToken });
-        } catch (err) {
-          console.error(err);
-          res.status(500).json({ message: 'Internal server error' });
-        }
-      },
-      
-       refreshAccessToken : async (req, res) => {
-        try {
-          const { refreshToken } = req.body;
-      
-          // Verify the refresh token
-          const decoded = verifyRefreshToken(refreshToken);
-      
-          if (!decoded) {
-            return res.status(401).json({ message: 'Invalid refresh token' });
-          }
-      
-          //  a new access token
-          const accessToken = AccessToken({ id: decoded.id });
-      
-          res.json({ accessToken });
-        } catch (err) {
-          console.error(err);
-          res.status(500).json({ message: 'Internal server error' });
-        }
-      },
-resetPassword : async (req, res)=>{
-    try{
-        const {userName,newPassword}= req.body;
 
-        const user = await User.findOne({where:{userName}})
+          return res.json({ message: "Authentication successful" });
+        });
+      })
+      .catch((err) => {
+        console.error("Error authenticating user:", err);
+        res.status(500).json({ message: "Internal Server Error" });
+      });
+  },
 
+  registerUser: (req, res) => {
+    const { fullname, address, contact, birthDate, userName, email, password } = req.body;
 
-        if(!user){
-return res.status(404).json({message:"user not found"})
-        }
+    bcrypt.hash(password, 10, (err, hash) => {
+      if (err) {
+        console.error("Error hashing password:", err);
+        return res.status(500).json({ message: "Internal Server Error" });
+      }
 
-        //  salt and hash pw
-        const salt= await bcrypt.genSalt(10)
-        const hashedPassword = await bcrypt.hash(newPassword, salt)
+      User.create({
+        fullname,
+        address,
+        contact,
+        birthDate,
+        userName,
+        email,
+        password: hash,
+      })
+        .then((user) => {
+          const accessToken = generateAccessToken(user.userId, "user");
+          const refreshToken = generateRefreshToken(user.userId, "user");
 
-        // updte pw
-        user.password = hashedPassword;
-        await user.save()
+          res.cookie("access_token", accessToken, {
+            httpOnly: true,
+            maxAge: 15 * 60 * 1000, // 15 minutes
+          });
 
-        res.json({message:"password reset successful"})
-        }catch(err){
-        console.error(err)
-            res.status(500).json({message: "internal server err"})
-        
-    }
-},
+          res.cookie("refresh_token", refreshToken, {
+            httpOnly: true,
+            maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
+          });
 
-}
+          return res.json({ message: "User registered successfully" });
+        })
+        .catch((err) => {
+          console.error("Error registering user:", err);
+          res.status(500).json({ message: "Internal Server Error" });
+        });
+    });
+  },
 
-module.exports = authControllers
+  registerAdmin: (req, res) => {
+    const { userName, email, password } = req.body;
 
+    bcrypt.hash(password, 10, (err, hash) => {
+      if (err) {
+        console.error("Error hashing password:", err);
+        return res.status(500).json({ message: "Internal Server Error" });
+      }
+
+      Admin.create({
+        userName,
+        email,
+        password: hash,
+      })
+        .then((admin) => {
+          const accessToken = generateAccessToken(admin.adminId, "admin");
+          const refreshToken = generateRefreshToken(admin.adminId, "admin");
+
+          res.cookie("access_token", accessToken, {
+            httpOnly: true,
+            maxAge: 15 * 60 * 1000, // 15 minutes
+          });
+
+          res.cookie("refresh_token", refreshToken, {
+            httpOnly: true,
+            maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
+          });
+
+          return res.json({ message: "Admin registered successfully" });
+        })
+        .catch((err) => {
+          console.error("Error registering admin:", err);
+          res.status(500).json({ message: "Internal Server Error" });
+        });
+    });
+  },
+};
+
+module.exports = authController

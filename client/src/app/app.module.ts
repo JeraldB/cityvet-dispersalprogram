@@ -11,6 +11,8 @@ import { FormsModule } from '@angular/forms';
 import { DashboardModalComponent } from './components/dashboard-modal/dashboard-modal.component';
 import { AddLivestocksComponent } from './components/add-livestocks/add-livestocks.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthenticationService } from './auth/authentication.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [AppComponent, DashboardModalComponent, AddLivestocksComponent],
@@ -23,7 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
     IonicModule.forRoot(),
     AppRoutingModule,
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [ AuthenticationService,CookieService,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy}],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

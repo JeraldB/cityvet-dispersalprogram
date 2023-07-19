@@ -1,25 +1,21 @@
 const jwt = require('jsonwebtoken');
-require('dotenv').config();
+require("dotenv").config();
 
-const secretKey = process.env.ACCESS_TOKEN_SECRET;
+const authenticateToken = (req, res, next) => {
+  const accessToken = req.cookies.access_token;
 
-const authenticate = (req, res, next) => {
-  // Get the access token from the request headers
-  const token = req.headers.authorization?.split(' ')[1];
-
-  if (!token) {
-    return res.status(401).json({ message: 'Access token not found' });
+  if (!accessToken) {
+    return res.status(401).json({ message: "Unauthorized" });
   }
 
-  try {
-    // Verify the access token
-    const decoded = jwt.verify(token, secretKey);
-    // Attach the user ID to the request object
-    req.userId = decoded.userId;
+  jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+    if (err) {
+      return res.status(403).json({ message: "Forbidden" });
+    }
+
+    req.user = user;
     next();
-  } catch (err) {
-    return res.status(403).json({ message: 'Invalid token' });
-  }
+  });
 };
 
-module.exports = authenticate;
+module.exports = { authenticateToken };
