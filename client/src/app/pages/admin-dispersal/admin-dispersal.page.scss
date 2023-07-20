@@ -1,3 +1,7 @@
+.Title{
+  text-align: center;
+}
+
 ion-content {
     --ion-background-color: #f5f5f5;
     --ion-text-color: #333;
@@ -12,6 +16,9 @@ ion-content {
   ion-item {
     --padding-start: 10px;
     --padding-end: 10px;
+    margin:10px;
+    border-radius: 15px;
+    box-shadow: 0 6px 6px -7px rgb(168, 167, 167);
   }
   
   ion-input {
@@ -22,5 +29,8 @@ ion-content {
   
   ion-button {
     margin-top: 20px;
+  }
+  .searchbar_list{
+    border-radius: 50px;
   }
   

@@ -1,10 +1,13 @@
 <ion-header class="ion-no-border">
-  <h4 class="Title">Beneficiary Management</h4>
+ <ion-toolbar>
+  <h3  style="margin-left: 15px;" slot="start">Beneficiary Management</h3>
+  <ion-searchbar placeholder="Search Name or ID" slot="end"></ion-searchbar>
+ </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-  <h4 class="heading">filter</h4>
+  <h4 class="heading">Filter</h4>
 
   <ion-item>
     <ion-label>
@@ -18,18 +21,16 @@
     </ion-select>
   </ion-item>
 
-  <!--SEARCH BAR------------------------------------------------------>
-
-  <ion-searchbar placeholder="Search Name or ID"></ion-searchbar>
-
-  <!--END SEARCH BAR------------------------------------------------------>
 
   <h4 class="heading">List</h4>
 
   <!--INFINITE SCROLL------------------------------------------------------>
 
-  <ion-list *ngIf="beneficiaries">
+  <ion-list *ngIf="beneficiaries" >
     <ion-item *ngFor="let beneficiary of beneficiaries">
+      <ion-button slot="end" color="danger">
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-button>
       <ion-label>
         <h2>{{ beneficiary.user.fullname }}</h2>
         <p>Email: {{ beneficiary.user.email }}</p>
@@ -40,8 +41,15 @@
   <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
     <ion-infinite-scroll-content></ion-infinite-scroll-content>
   </ion-infinite-scroll>
-
+  
   <!--------------------------------------------------------------------------------->
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button>
+      <ion-icon name="add">
+      </ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  
 
 
 </ion-content>

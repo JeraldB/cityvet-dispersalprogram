@@ -1,12 +1,13 @@
 .heading {
     font-size: 20px;
     font-weight: bold;
+    margin: 4%;
   }
-  
   ion-item {
+    margin:10px;
     margin-bottom: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    box-shadow: 0 6px 6px -7px rgb(168, 167, 167);
   }
   
   ion-badge {
@@ -18,3 +19,4 @@
     --padding-end: 0;
     font-size: 14px;
   }
+

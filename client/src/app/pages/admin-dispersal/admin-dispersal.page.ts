@@ -6,6 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-dispersal.page.scss'],
 })
 export class AdminDispersalPage implements OnInit {
+  isModalOpen = false;
+
+  setOpen(isOpen : boolean){
+    this.isModalOpen = isOpen;
+  }
 
   constructor() { }
 
