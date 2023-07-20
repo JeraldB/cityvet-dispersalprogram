@@ -9,7 +9,7 @@ const routes: Routes = [
     component: UserTabsPage,
     children: [
       {
-        path: 'dashboard',
+        path: 'offspring',
         children: [
           {
             path: '',
@@ -76,6 +76,18 @@ const routes: Routes = [
             loadChildren: () =>
               import('../availment/availment-routing.module').then(
                 (m) => m.AvailmentPageRoutingModule
+              ),
+          },
+        ],
+      },
+      {
+        path: 'about',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../about/about-routing.module').then(
+                (m) => m.AboutPageRoutingModule
               ),
           },
         ],

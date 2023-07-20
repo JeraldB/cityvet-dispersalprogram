@@ -20,64 +20,117 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-item class="ion-padding" style="margin-bottom:0; padding-bottom: 0;">
-    <div>
+<ion-content [fullscreen]="true" color="light">
 
-        <h3 style="margin-bottom: 0;">Hello {{ user?.fullname }}</h3>
+  <div class="main-header"></div>
 
-  
-      <div>
-        <p style="margin-top:0; font-weight: 100; ">Welcome back!</p>
-      </div>
-    </div>
-  </ion-item>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6">
+        <ion-label>
+          <ion-note color="light" class="ion-margin-start">
+            Hello!
+          </ion-note>
+          <p>
+            <ion-chip color="light">
+              <ion-label class="ion-text-wrap">
+              Dinvir Asi
+              </ion-label>
+            </ion-chip>
+          </p>
+        </ion-label>
+      </ion-col>
+      <ion-col size="6" class="ion-text-end">
+        <ion-button color="light" size="small">
+          <ion-text color="primary">Avail Service</ion-text>
+          <ion-icon name="add" color="primary" slot="end"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
 
-  <ion-row class="card-row">
-    <ion-col size="4">
-      <ion-card class="card-icon">
-        <ion-card-content>
-          <ion-icon name="icon-name" class="icon"></ion-icon>
-          <ion-card-title class="title">Manage</ion-card-title>
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
+    <ion-row class="ion-margin-horizontal ion-margin-top">
+      <ion-col>
+        <ion-label color="light">
+          <b>All features</b>
+        </ion-label>
+      </ion-col>
+    </ion-row>
 
-    <ion-col size="4">
-      <ion-card class="card-icon">
-        <ion-card-content>
-          <ion-icon name="icon-name" class="icon"></ion-icon>
-          <ion-card-title class="title">Calendar</ion-card-title>
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
-
-    <ion-col size="4">
-      <ion-card class="card-icon">
-        <ion-card-content>
-          <ion-icon name="icon-name" class="icon"></ion-icon>
-          <ion-card-title class="title">Inquiry</ion-card-title>
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
-  </ion-row>
-  
-    <ion-card style="border-radius: 12px;" class="sticky-card">
-      <ion-card-header>
-        <ion-card-title class="transaction-title">Transactions</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <div class="transaction-list">
-          <div *ngFor="let transaction of transactions" class="transaction-item">
-            <div class="transaction-details">
-              <p class="transaction-description">{{ transaction.description }}</p>
-              <p class="transaction-date">Date: {{ transaction.date }}</p>
-
+    <ion-row class="ion-margin-horizontal">
+      <ion-col size="6">
+        <ion-card class="ion-text-center">
+          <ion-card-header>
+            <div align="center">
+              <ion-thumbnail >
+                <img src="../../../assets/icon/calendar.png" />
+              </ion-thumbnail>
             </div>
-            <hr class="transaction-line" />
-          </div>
-        </div>
-      </ion-card-content>
-    </ion-card>
- 
+          </ion-card-header>
+          <ion-card-content>
+            <ion-label color="dark">Calendar</ion-label>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <ion-card class="ion-text-center">
+          <ion-card-header>
+            <div align="center">
+              <ion-thumbnail >
+                <img src="../../../assets/icon/manage.png" />
+              </ion-thumbnail>
+            </div>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-label color="dark">Manage</ion-label>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <ion-card class="ion-text-center">
+          <ion-card-header>
+            <div align="center">
+              <ion-thumbnail >
+                <img src="../../../assets/icon/offspring.png" />
+              </ion-thumbnail>
+            </div>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-label color="dark" routerLink="/offspring">Offspring Tracker</ion-label>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <ion-card class="ion-text-center">
+          <ion-card-header>
+            <div align="center">
+              <ion-thumbnail >
+                <img src="../../../assets/icon/report.png" />
+              </ion-thumbnail>
+            </div>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-label color="dark">Reporting</ion-label>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+
+    <ion-list>
+      <ion-list-header>
+        <ion-label><h2>RECENT TRANSACTIONS</h2></ion-label>
+      </ion-list-header>
+      <ion-item *ngFor="let transaction of transactions" class="transaction-item">
+        <ion-icon slot="start" name="document" color="primary"></ion-icon>
+        <ion-label size="large" class="ion-text-wrap">
+          <b>Date: {{ transaction.date }}</b>
+          <p>
+            {{ transaction.description }}
+          </p>
+        </ion-label>
+        <ion-text slot="end"> </ion-text>
+      </ion-item>
+    </ion-list>
+  </ion-grid>
+  
 </ion-content>
