@@ -60,7 +60,7 @@ node server.js
 or
 
 ```
-nodemon start
+npm start
 ```
 
 &nbsp;The development of the project for the city veterinary office's livestock program is noteworthy for its transition from Excel-based tracking to a more accessible and user-friendly platform, enabling centralized data storage, real-time collaboration, and the potential for automation of data validation and other processes, streamlining record management and enhancing overall efficiency.The implementation of automation within the website-based record management system further reduces manual effort, improves accuracy, and allows for seamless data processing, enhancing the effectiveness of the city veterinary office's livestock program.
