@@ -55,7 +55,23 @@ const usersController = {
         console.error("Error deleting user:", err);
         res.status(500).json({ message: "Internal Server Error" });
       });
-  }
+  },
+  getUserById :(req, res) => {
+    const userId = req.params.userId; // Assuming the userId is passed as a route parameter
+  
+    User.findByPk(userId)
+      .then((user) => {
+        if (!user) {
+          return res.status(404).json({ message: "User not found" });
+        }
+  
+        return res.json(user);
+      })
+      .catch((err) => {
+        console.error("Error fetching user:", err);
+        res.status(500).json({ message: "Internal Server Error" });
+      });
+  },
 };
 
 module.exports = usersController;

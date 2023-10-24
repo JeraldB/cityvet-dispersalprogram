@@ -1,14 +1,21 @@
 <ion-header class="ion-no-border">
  <ion-toolbar>
-  <h3  style="margin-left: 15px;" slot="start">Beneficiary Management</h3>
-  <ion-searchbar placeholder="Search Name or ID" slot="end"></ion-searchbar>
+  <h3  style="margin-left: 15px; margin-bottom: 20px;" slot="start">Beneficiary Management</h3>
+  
  </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
-  <h4 class="heading">Filter</h4>
-
+<ion-content class="ion-padding">
+  <ion-row>
+    <ion-col size="6">
+      <h4 class="heading">Filter</h4>
+    </ion-col>
+    <ion-col  class="ion-text-end">
+      <ion-button color="light" size="small" (click)="openAvailmentModal()">
+        <ion-text color="primary">Availment Request</ion-text>
+      </ion-button>
+    </ion-col>
+  </ion-row>
   <ion-item>
     <ion-label>
       benefeciary
@@ -42,7 +49,6 @@
     <ion-infinite-scroll-content></ion-infinite-scroll-content>
   </ion-infinite-scroll>
   
-  <!--------------------------------------------------------------------------------->
   <ion-fab slot="fixed" vertical="bottom" horizontal="end">
     <ion-fab-button>
       <ion-icon name="add">

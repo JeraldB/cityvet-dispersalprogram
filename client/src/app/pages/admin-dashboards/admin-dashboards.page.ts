@@ -1,29 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-
 import { Chart, ChartConfiguration, ChartTypeRegistry } from 'chart.js';
+
 @Component({
   selector: 'app-admin-dashboards',
   templateUrl: './admin-dashboards.page.html',
   styleUrls: ['./admin-dashboards.page.scss'],
 })
 export class AdminDashboardsPage implements OnInit {
-  presentingElement : Element | null = null;
-  
+  presentingElement: Element | null = null;
+
   public alertButton = [
     {
-      text:'Cancel',
-      role:'cancel',
+      text: 'Cancel',
+      role: 'cancel',
     },
     {
       text: 'OK',
-      role: 'Confirm'
-    }
-  ]
+      role: 'Confirm',
+    },
+  ];
 
-  isModalOpen =false;
+  isModalOpen = false;
 
-  setOpen(isOpen: boolean){
-    this.isModalOpen =isOpen;
+  setOpen(isOpen: boolean) {
+    this.isModalOpen = isOpen;
   }
 
   data = [
@@ -34,11 +34,11 @@ export class AdminDashboardsPage implements OnInit {
     { value: 130, label: 'Broiler' },
   ];
 
-  private myChart: Chart<'pie', (number | string)[]> | null = null; // Store the chart instance
+  private myChart: Chart<'doughnut', (number | string)[]> | null = null; // Store the chart instance
 
-  constructor() { }
-  swiperSlideChanged(e:any){
-    console.log('changed :', e );
+  constructor() {}
+  swiperSlideChanged(e: any) {
+    console.log('changed :', e);
   }
   ngOnInit() {
     this.presentingElement = document.querySelector('.ion-page');
@@ -48,15 +48,17 @@ export class AdminDashboardsPage implements OnInit {
 
   initializeChart() {
     const ctx = document.getElementById('myChart') as HTMLCanvasElement;
-
+  
     if (this.myChart) {
       this.myChart.destroy(); // Destroy the existing chart instance if it exists
     }
-
-    const chartOptions: ChartConfiguration<'pie', (number | string)[]> = {
-      type: 'pie',
+  
+    const totalValue = this.data.reduce((sum, item) => sum + item.value, 0);
+  
+    const chartOptions: ChartConfiguration<'doughnut', (number | string)[]> = {
+      type: 'doughnut', // Changed chart type to 'doughnut'
       data: {
-        labels: this.data.map((item) => item.label),
+        labels: this.data.map((item) => `${item.label} (${((item.value / totalValue) * 100).toFixed(1)}%)`), // Show percentage in the labels
         datasets: [
           {
             data: this.data.map((item) => item.value),
@@ -71,11 +73,8 @@ export class AdminDashboardsPage implements OnInit {
         ],
       },
     };
-
-    this.myChart = new Chart(ctx, chartOptions) as Chart<
-      'pie',
-      (number | string)[]
-    >;
+  
+    this.myChart = new Chart(ctx, chartOptions) as Chart<'doughnut', (number | string)[]>;
   }
 
   updateChart() {

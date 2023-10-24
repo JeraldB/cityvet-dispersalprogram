@@ -4,25 +4,31 @@ import { Observable, of } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthenticationService {
-  private isAuthenticated = false;
+  private readonly TOKEN_KEY = 'jwt';
 
   constructor() {}
 
   login(token: string) {
-    // Save the token to local storage or in memory
-    localStorage.setItem('token', token);
-    this.isAuthenticated = true;
+    // Save the JWT token to local storage
+    localStorage.setItem(this.TOKEN_KEY, token);
   }
 
   logout() {
-    // Remove the token from local storage or reset the authentication state
-    localStorage.removeItem('token');
-    this.isAuthenticated = false;
+    // Remove the JWT token from local storage
+    localStorage.removeItem(this.TOKEN_KEY);
   }
 
-  isAuthenticatedUser(): Observable<boolean> {
-    // Return an observable that emits the boolean value
-    return of(this.isAuthenticated || !!localStorage.getItem('token'));
+  getAccessToken(): string {
+    // Get the JWT token from local storage
+    const token = localStorage.getItem(this.TOKEN_KEY);
+
+    // If the token is null or undefined, return an empty string
+    return token ? token : '';
   }
+  isLoggedIn(): boolean {
+    // Check if the user is logged in (i.e., JWT token is present)
+    return !!this.getAccessToken();
+  }
+  
 }
 

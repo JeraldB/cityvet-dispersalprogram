@@ -9,6 +9,7 @@ router.put("/service/:availmentId/accept", availmentController.acceptAvailment);
 router.put("/service/:availmentId/reject", availmentController.rejectAvailment);
 router.get("/allService", availmentController.getAllAvailments);
 router.put("/edit/:availmentId", availmentController.editAvailment);
+router.get('/user/:userId', availmentController.getAvailmentsForUser);
 
 module.exports = router;
 

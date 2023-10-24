@@ -9,6 +9,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING(150),
       allowNull: false,
     },
+    fullname: {
+      type: DataTypes.STRING(150),
+      allowNull: false,
+    },
+    address: {
+      type: DataTypes.STRING(150),
+      allowNull: false,
+    },
 
     referralLetter:{
         type:DataTypes.STRING(50),
@@ -24,7 +32,8 @@ module.exports = (sequelize, DataTypes) => {
         type:DataTypes.BOOLEAN,
        defaultValue:null,
 
-    }
+    },
+
   });
 
   Availment.associate = (models) => {

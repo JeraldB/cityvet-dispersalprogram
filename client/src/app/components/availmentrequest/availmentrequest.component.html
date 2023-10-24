@@ -1,0 +1,75 @@
+<!-- modal-content.component.html -->
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Notification</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngFor="let availment of availments">
+    <ion-item-sliding>
+      <ion-item-options side="start">
+        <!-- Display the "Approved" button in the ion-item-options -->
+        <ion-item-option color="success" expandable (click)="onApprove(availment.id)" *ngIf="!availment.isAccepted">
+          Approved
+        </ion-item-option>
+      </ion-item-options>
+
+      <ion-item  *ngIf="availment.user">
+        <ion-avatar slot="start">
+          <ion-img src="../../../assets/icon/favicon.png"></ion-img>
+        </ion-avatar>
+       
+        <div *ngIf="availment.user">
+          <h3>User Details:</h3>
+          <p>User ID: {{ availment.userId }}</p>
+          <p>Fullname: {{ availment.fullname }}</p>
+        </div>
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option id="present_alert" (click)="setOpen(true)">Check</ion-item-option>
+
+        <ion-modal [isOpen]="isModalOpen">
+          <ng-template>
+            <ion-header>
+              <ion-toolbar>
+                <ion-title>Application Information</ion-title>
+                <ion-buttons slot="end">
+                  <ion-button (click)="setOpen(false)">Close</ion-button>
+                </ion-buttons>
+              </ion-toolbar>
+            </ion-header>
+            <ion-content class="ion-padding" >
+            <div *ngIf="availment.user">
+              <ion-item >
+                <ion-label>Name:  {{ availment.fullname }}</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label>Age: </ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label>Address:  {{ availment.address }}</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label>Dispersed or Beneficiary</ion-label>
+              </ion-item>
+            </div>
+            </ion-content>
+          </ng-template>
+        </ion-modal>
+
+        <ion-item-option id="present-alerts" color="danger" expandable>Delete</ion-item-option>
+        <ion-alert
+          trigger="present-alerts"
+          header="Removed?"
+          message="Are you sure to remove?"
+          [buttons]="alertButton"
+        ></ion-alert>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

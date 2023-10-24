@@ -3,12 +3,15 @@ POST http://localhost:8000/api/auth/login/user
 Content-Type: application/json
 
 {
-  "email": "kana@",
+  "email": "michaelpagcaliwagan@gmail.com",
   "password": "123"
 }
 
 ###
 GET http://localhost:8000/api/user/profile
 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIzLCJpYXQiOjE2ODk3NTczOTgsImV4cCI6MTY4OTc1ODI5OH0.dRjUp1IzR9lglGG_sXdh2l78ZrpgO6q77mrktivqYwM
+Authorization: Bearer 
+
 ###
+# eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjg5ODU5NTY2LCJleHAiOjE2ODk4NjMxNjZ9.IUJB1vtja9lUvI84NHpKLawGIYwkC10gmzhn-T4T3Zs
+# ###

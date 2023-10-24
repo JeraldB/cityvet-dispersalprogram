@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { InfiniteScrollCustomEvent } from '@ionic/angular';
 import { AdminBenefeciaryApi } from './admin.benefeciary.api';
-
+import { ModalController } from '@ionic/angular';
+import { AvailmentrequestComponent } from 'src/app/components/availmentrequest/availmentrequest.component';
 
 @Component({
   selector: 'app-admin-beneficiary',
@@ -11,11 +12,20 @@ import { AdminBenefeciaryApi } from './admin.benefeciary.api';
 export class AdminBeneficiaryPage implements OnInit {
   beneficiaries: any[]= [];
   selectedBeneficiary: any;
+  presentingElement: any;
+
+
 onBeneficiarySelect(e: any) {
   this.selectedBeneficiary = e.detail.value;
   console.log(this.selectedBeneficiary);
 }
-  constructor(private AdminBenefeciaryApi: AdminBenefeciaryApi) {}
+  constructor(private AdminBenefeciaryApi: AdminBenefeciaryApi, private modalController: ModalController,) {}
+  async openAvailmentModal() {
+    const modal = await this.modalController.create({
+      component: AvailmentrequestComponent,
+    });
+    return await modal.present();
+  }
 
   ngOnInit() {
     this.loadBeneficiaries();
@@ -40,5 +50,16 @@ onBeneficiarySelect(e: any) {
     setTimeout(() => {
       ev.target.complete();
     }, 500);
+  }
+
+  async openModal() {
+    const modal = await this.modalController.create({
+      component: AvailmentrequestComponent,
+      componentProps: {
+        presentingElement: this.presentingElement,
+      },
+    });
+
+    modal.present();
   }
 }

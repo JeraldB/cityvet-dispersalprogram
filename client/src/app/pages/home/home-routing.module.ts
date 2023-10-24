@@ -6,8 +6,34 @@ import { HomePage } from './home.page';
 const routes: Routes = [
   {
     path: '',
-    component: HomePage
-  }
+    component: HomePage,
+    
+  },
+  {
+    path: 'offspring',
+    children: [
+      {
+        path: '',
+        loadChildren: () =>
+          import('../dashboard/dashboard-routing.module').then(
+            (m) => m.DashboardPageRoutingModule
+          ),
+      },
+    ],
+  },
+  {
+    path: 'availments',
+    children: [
+      {
+        path: '',
+        loadChildren: () =>
+          import('../availment/availment-routing.module').then(
+            (m) => m.AvailmentPageRoutingModule
+          ),
+      },
+    ],
+  },
+
 ];
 
 @NgModule({

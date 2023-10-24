@@ -10,12 +10,14 @@ import { NgChartsModule } from 'ng2-charts';
 import { FormsModule } from '@angular/forms';
 import { DashboardModalComponent } from './components/dashboard-modal/dashboard-modal.component';
 import { AddLivestocksComponent } from './components/add-livestocks/add-livestocks.component';
-import { HttpClientModule } from '@angular/common/http';
+import { AvailmentrequestComponent } from './components/availmentrequest/availmentrequest.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthenticationService } from './auth/authentication.service';
 import { CookieService } from 'ngx-cookie-service';
+import { AuthInterceptor } from './auth.interceptor';
 
 @NgModule({
-  declarations: [AppComponent, DashboardModalComponent, AddLivestocksComponent],
+  declarations: [AppComponent, DashboardModalComponent, AddLivestocksComponent,AvailmentrequestComponent],
 
   imports: [
     BrowserModule,
@@ -25,7 +27,12 @@ import { CookieService } from 'ngx-cookie-service';
     IonicModule.forRoot(),
     AppRoutingModule,
   ],
-  providers: [ AuthenticationService,CookieService,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy}],
+  providers: [ AuthenticationService,CookieService,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy},{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true,
+    deps: [AuthenticationService],
+  },],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

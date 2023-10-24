@@ -12,7 +12,7 @@ router.post('/register/user', authController.registerUser);
 router.post('/login/user', authController.loginUser);
 
 // Admin Login
-// router.post('/login/admin', authController.loginAdmin);
+router.post('/login/admin', authController.loginAdmin);
 
 // Refresh Access Token
 // router.post('/refresh-token', authController.refreshAccessToken);

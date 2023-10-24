@@ -2,19 +2,26 @@
   <ion-list  class="LoginForm">
   <ion-list>
     <img src="../../../../assets/images/logo.png">
-  </ion-list>
+   </ion-list>
     <ion-list>
-      <ion-item>
-        <ion-input labelPlacement="floating" label="Username" type="email" ></ion-input>
-      </ion-item>
-    </ion-list>
-    <ion-list>
-      <ion-item>
-        <ion-label position="floating">Password</ion-label>
-        <ion-input type="password"></ion-input>
-      </ion-item>
-      
-        <ion-button class="success" routerLink="/admin-tabs/admin-dashboards" color="success" size="small" expand="full" shape="round">LOGIN</ion-button>
+      <ion-list>
+        <ion-list>
+          <ion-item>
+            <ion-input labelPlacement="floating" label="Username" type="text" [(ngModel)]="email"></ion-input>
+          </ion-item>
+        </ion-list>
+        <ion-list>
+          <ion-item>
+            <ion-label position="floating">Password</ion-label>
+            <ion-input type="password" [(ngModel)]="password"></ion-input>
+          </ion-item>
+        
+          <ion-button class="success" (click)="login()" color="success" size="small" expand="full" shape="round">LOGIN</ion-button>
+          <br>
+        </ion-list>
+        
+        <br>
+      </ion-list>
         <br>
     <ion-list>
       <ion-text class="termsP">By continuing, you agree to the <a href="" id="click-trigger">Terms of use </a>and <a href="">Privacy Policy</a>

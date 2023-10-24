@@ -46,7 +46,7 @@ const dispersalController = {
         include: [
           {
             model: Livestock,
-            where: { isDispersed: true }, // Assuming 'isDispersed' is a flag to indicate whether the livestock is dispersed or not.
+            where: { isDispersed: true }, 
           },
         ],
       });
@@ -61,6 +61,24 @@ const dispersalController = {
     } catch (error) {
       console.error("Error fetching dispersed livestock:", error);
       res.status(500).json({ error: "Internal server error" });
+    }
+  },
+  getAllTransactionsForUser: async (req, res) => {
+    const userId = req.userId; // Assuming you have the userId available in the request
+
+    try {
+      // Fetch all transactions associated with the specified user
+      const transactions = await Transaction.findAll({
+        include: {
+          model: Beneficiary,
+          where: { userId }, 
+        },
+      });
+
+      res.status(200).json(transactions);
+    } catch (error) {
+      console.error('Error fetching transactions for user:', error);
+      res.status(500).json({ error: 'Internal server error' });
     }
   },
 };

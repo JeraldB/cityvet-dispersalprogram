@@ -6,11 +6,13 @@ const User = db.users;
 const availmentController = {
   createAvailment: async (req, res) => {
     try {
-      const { userId, description, referralLetter, residentCertificate } = req.body;
+      const { userId, fullname, address, description, referralLetter, residentCertificate } = req.body;
 
       // Create the availment
       const availment = await Availment.create({
         description,
+        fullname,
+        address,
         referralLetter,
         residentCertificate,
         isAccepted: null,
@@ -96,7 +98,7 @@ const availmentController = {
   editAvailment: async (req, res) => {
     try {
       const { availmentId } = req.params;
-      const { description, referralLetter, residentCertificate } = req.body;
+      const { description, fullname,address,referralLetter, residentCertificate } = req.body;
 
       // Find the availment
       const availment = await Availment.findByPk(availmentId);
@@ -106,6 +108,8 @@ const availmentController = {
       }
 
       // Update the availment
+      availment.fullname = fullname;
+      availment.address = address;
       availment.description = description;
       availment.referralLetter = referralLetter;
       availment.residentCertificate = residentCertificate;
@@ -116,6 +120,18 @@ const availmentController = {
       res.status(500).json({ error: "Internal server error" });
     }
   },
-};
+  getAvailmentsForUser : async (req, res) => {
+    const userId = req.params.userId;
+  
+    try {
+      // Fetch all availments for the specified user
+      const availments = await Availment.findAll({ where: { userId } });
+  
+      res.status(200).json(availments);
+    } catch (error) {
+      res.status(500).json({ error: 'Internal server error' });
+    }
+},
+}
 
 module.exports = availmentController;

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController, ModalController } from '@ionic/angular';
-import { UserApi } from './api.user';
+import { ApiService } from 'src/app/service/api.service';
 import { User } from './user.model';
 import { AuthenticationService } from 'src/app/auth/authentication.service';
 import { CookieService } from 'ngx-cookie-service';
@@ -13,18 +13,19 @@ import { CookieService } from 'ngx-cookie-service';
 export class HomePage implements OnInit {
   transactions: any[] = [
     {
-      title: 'Transaction 1',
-      description: 'This is the description for Transaction 1.',
+      title: 'Recieved CPDO Cattle',
+      description: 'reference id: VJF87T847TU',
+      date: '2023-07-02',
 
     },
     {
       title: 'Transaction 2',
-      description: 'This is the description for Transaction 2.',
+      description: 'reference id: 4EGGE847TU',
       date: '2023-07-02',
     
     },
   ];
-  constructor(private menuController: MenuController,private userApi: UserApi,private AuthenticationService: AuthenticationService
+  constructor(private menuController: MenuController,private ApiService: ApiService,private AuthenticationService: AuthenticationService
     ,private cookieService: CookieService) {
 
     
@@ -36,23 +37,35 @@ export class HomePage implements OnInit {
     this.menuController.enable(true, 'main-menu');
     this.menuController.open('main-menu');
   }
-
+  userId!: number;
   ngOnInit() {
-    this.getUserProfile();
+    this.fetchUserProfile();
+    this.fetchTransactionsForUser();
     }
-  
-  
-  user: any; 
-  getUserProfile() {
-
-    this.userApi.getUserProfile().subscribe({
-       next : (user: User) => {
-          this.user = user;
-          console.log('User Profile:', this.user);
+    fetchTransactionsForUser() {
+      this.ApiService.getTransactionsForUser(this.userId).subscribe({
+       next: (transactions) => {
+        
+          console.log('Transactions for user:', transactions);
         },
-        error :(error: any) => {
-          console.error('Failed to fetch user profile:', error);
+      error:  (error) => {
+       
+          console.error('Error fetching transactions:', error);
         }
-  });
+    });
     }
+  
+    userProfile: User | undefined;
+
+    fetchUserProfile() {
+      this.ApiService.getProfile().subscribe({
+        next: (response) => {
+          this.userProfile = response as User;
+        },
+        error: (error) => {
+          console.error('Error fetching user profile:', error);
+        }
+      });
+    }
+    
 }

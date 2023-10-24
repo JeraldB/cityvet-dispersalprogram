@@ -10,9 +10,8 @@
   
     <ion-item button detail="true" detail-icon="newspaper-outline" (click)="setOpen(true)">
       <ion-label>
-        <h3>Button Item</h3>
-        <p>Detail set to true - detail arrow displays on both modes</p>
-        <p>Detail icon set to caret-forward-outline</p>
+        <h3>Dispersed Livestock</h3>
+    
       </ion-label>
       <ion-modal [isOpen]="isModalOpen">
         <ng-template>
@@ -27,21 +26,25 @@
             </ion-toolbar>
           </ion-header>
           <ion-content>
-            <ion-item>
-              <ion-label>User ID: </ion-label>
-            </ion-item>
-            <ion-item>
-              <ion-label>Name: </ion-label>
-            </ion-item>
-            <ion-item>
-              <ion-label>Address: </ion-label>
-            </ion-item>
-            <ion-item>
-              <ion-label>Age: </ion-label>
-            </ion-item>
-            <ion-item>
-              <ion-label>User Type: </ion-label>
-            </ion-item>
+            <form [formGroup]="dispersalForm" (ngSubmit)="onSubmit()">
+              <ion-item>
+                <ion-label position="floating">Beneficiary ID</ion-label>
+               
+                <ion-input formControlName="benefeciaryId" type="text"></ion-input>
+              </ion-item>
+            
+              <ion-item>
+                <ion-label position="floating">Livestock ID</ion-label>
+                <ion-input formControlName="livestockId" type="text"></ion-input>
+              </ion-item>
+            
+              <ion-item>
+                <ion-label position="floating">Description</ion-label>
+                <ion-input formControlName="description" type="text"></ion-input>
+              </ion-item>
+            
+              <ion-button expand="block" type="submit" [disabled]="!dispersalForm.valid">Disperse Livestock</ion-button>
+            </form>
           </ion-content>
         </ng-template>
       </ion-modal>

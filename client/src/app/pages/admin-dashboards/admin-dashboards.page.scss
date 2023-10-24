@@ -15,7 +15,12 @@ ion-content, .body-background{
 .admin-swipe{
     border-radius: 20px;
 }
+.logo {
+    width: 20px;
+    height: 15px; 
+  }
 #swipes{
+
 
     --ion-background-color: radial-gradient(rgb(255, 255, 255), rgb(233, 233, 233));
     opacity: 0.9;

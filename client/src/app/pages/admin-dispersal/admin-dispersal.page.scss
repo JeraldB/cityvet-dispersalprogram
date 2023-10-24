@@ -25,6 +25,7 @@ ion-content {
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 10px;
+    height: fit-content;
   }
   
   ion-button {
@@ -33,4 +34,41 @@ ion-content {
   .searchbar_list{
     border-radius: 50px;
   }
+  ion-content {
+    --background: #f8f8f8; /* Set the background color of the content area */
+  }
   
+  ion-item {
+    --padding-start: 20px; /* Set the left padding for the ion-items */
+    --padding-end: 20px; /* Set the right padding for the ion-items */
+  }
+  
+  ion-label {
+    color: #333; /* Set the label text color */
+  }
+  
+  ion-input {
+    border: 1px solid #ccc; /* Add a border to the input field */
+    border-radius: 8px; /* Add border radius to the input field */
+    padding: 10px 16px; /* Add padding to the input field */
+  }
+  
+  ion-button {
+    --background: #007bff; /* Set the background color of the button */
+    --color: #fff; /* Set the text color of the button */
+    border-radius: 8px; /* Add border radius to the button */
+    font-size: 16px; /* Set the font size of the button text */
+    font-weight: bold; /* Set the font weight of the button text */
+    margin-top: 20px; /* Add top margin to the button */
+  }
+  
+  /* Style the button when it's disabled */
+  ion-button[disabled] {
+    --background: #ccc; /* Set the background color of the disabled button */
+    cursor: not-allowed; /* Change the cursor style when the button is disabled */
+  }
+  
+  /* Add a hover effect to the button */
+  ion-button:not([disabled]):hover {
+    --background: #0056b3; /* Set the background color of the button on hover */
+  }

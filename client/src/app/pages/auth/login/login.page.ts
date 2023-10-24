@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginApi } from './api.login';
+import { ApiService } from 'src/app/service/api.service';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { AuthenticationService } from 'src/app/auth/authentication.service';
@@ -10,7 +10,7 @@ import { AuthenticationService } from 'src/app/auth/authentication.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  userData = {
+  credentials = {
     email: '',
     password: '',
   };
@@ -19,7 +19,7 @@ export class LoginPage implements OnInit {
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
   }
-  constructor(private loginApi: LoginApi,
+  constructor(private ApiService: ApiService,
     private router: Router,
     private toastController: ToastController, private authenticationService : AuthenticationService) {}
 
@@ -35,27 +35,26 @@ export class LoginPage implements OnInit {
   }
 
   loginUser() {
-    this.loginApi.loginUser(this.userData)
-      .subscribe({
-        next: (response) => {
-          // Handle successful login response here
-          console.log('Logged in:', response);
-
-            // Call the login method of the AuthService
+    this.ApiService.loginUser(this.credentials).subscribe({
+     next: (response: any) => {
+        // Handle successful login response here
+        console.log('Logged in:', response);
+  
+        // Call the login method of the AuthService with the JWT token
         this.authenticationService.login(response.accessToken);
-          // Display a success toast notification upon successful login
-          this.presentToast('Login successful', 'success');
-
-          // Redirect to /user/home upon successful login
-          this.router.navigate(['/user/home']);
-        },
-        error: (error) => {
-          // Handle login error here
-          console.error('Login failed:', error);
-
-          // Display a danger toast notification for login errors
-          this.presentToast('Invalid email or password', 'danger');
-        }
-      });
+  
+        // Display a success toast notification upon successful login
+        this.presentToast('Login successful', 'success');
+  
+        // Redirect to /user/home upon successful login
+        this.router.navigate(['/user/home']);
+      },
+    error:  (error) => {
+        // Handle login error here
+        console.error('Login failed:', error);
+  
+        this.presentToast('Invalid email or password', 'danger');
+      }
+  });
   }
 }
